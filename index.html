@@ -3,760 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>神奈川工務店ナビ — 地域の工務店を比較・相談</title>
-<meta name="description" content="神奈川県の工務店を地域・特徴・坪単価で比較。施工事例・口コミを確認して、資料請求・見積もりができます。">
+<title>神奈川工務店ナビ — Local Navi</title>
+<meta name="description" content="神奈川県の工務店200件以上を掲載。エリア・工事種別で絞り込み、資料請求・見積もり依頼ができます。">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap');
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --navy:#1a2b4a;--blue:#1d4ed8;--blue-lt:#dbeafe;
-  --paper:#f8fafc;--white:#fff;--rule:#e2e8f0;--rule-dk:#cbd5e1;
-  --mid:#64748b;--text:#0f172a;
-  --amber:#b45309;--amber-lt:#fef3c7;
-  --green:#15803d;--green-lt:#dcfce7;
-  --serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;
-}
+:root{--navy:#1a2b4a;--blue:#1d4ed8;--blue-lt:#dbeafe;--paper:#f8fafc;--white:#fff;--rule:#e2e8f0;--rule-dk:#cbd5e1;--mid:#64748b;--text:#0f172a;--amber:#d97706;--serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;}
 html{scroll-behavior:smooth;}
 body{background:var(--paper);font-family:var(--sans);color:var(--text);font-size:15px;line-height:1.75;}
-
-/* NAV */
 nav{background:var(--navy);padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.nav-logo{font-family:var(--serif);font-size:18px;color:var(--white);letter-spacing:0.02em;text-decoration:none;}
+.nav-logo{font-family:var(--serif);font-size:18px;color:var(--white);text-decoration:none;}
 .nav-logo strong{color:#93c5fd;}
+.nav-logo small{font-size:11px;color:rgba(255,255,255,0.4);margin-left:8px;}
 .nav-center{display:flex;}
 .nav-center a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;padding:0 18px;height:60px;display:flex;align-items:center;border-bottom:2px solid transparent;transition:all .2s;}
-.nav-center a:hover{color:var(--white);border-bottom-color:#93c5fd;}
-.nav-cta{background:#d97706;color:var(--white);padding:9px 20px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;transition:background .2s;white-space:nowrap;}
-.nav-cta:hover{background:#b45309;}
-
-/* HERO */
-.hero{background:var(--navy);padding:72px 48px 56px;}
+.nav-center a:hover,.nav-center a.active{color:var(--white);border-bottom-color:#93c5fd;}
+.nav-cta{background:#d97706;color:var(--white);padding:9px 20px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;}
+.hero{background:var(--navy);padding:64px 48px 48px;}
 .hero-inner{max-width:1100px;margin:0 auto;}
-.hero-kicker{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#93c5fd;margin-bottom:20px;display:block;}
-.hero h1{font-family:var(--serif);font-size:clamp(32px,4.5vw,52px);line-height:1.2;color:var(--white);margin-bottom:16px;font-weight:600;}
-.hero-lead{font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:40px;max-width:560px;line-height:1.8;}
-.search-form{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;padding:24px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;max-width:960px;}
-.sf-group label{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);display:block;margin-bottom:6px;}
-.sf-select{width:100%;padding:10px 14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:6px;color:var(--white);font-size:14px;font-family:var(--sans);}
-.sf-select option{background:var(--navy);}
-.sf-btn{align-self:end;background:#1d4ed8;color:var(--white);padding:11px 32px;border-radius:6px;font-size:14px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;}
-.hero-stats{display:flex;gap:48px;margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.08);}
-.hstat .num{font-family:var(--serif);font-size:28px;color:var(--white);font-weight:600;letter-spacing:-0.02em;display:block;}
+.hero-kicker{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#93c5fd;margin-bottom:16px;display:block;}
+.hero h1{font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--white);font-weight:600;line-height:1.2;margin-bottom:12px;}
+.hero-lead{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:32px;}
+.search-bar{display:flex;gap:12px;max-width:900px;}
+.search-input{flex:1;padding:12px 16px;border:none;border-radius:6px;font-size:15px;font-family:var(--sans);}
+.search-select{padding:12px 16px;border:none;border-radius:6px;font-size:14px;font-family:var(--sans);background:var(--white);min-width:160px;}
+.search-btn{background:#1d4ed8;color:var(--white);padding:12px 28px;border-radius:6px;font-size:14px;font-weight:700;border:none;cursor:pointer;white-space:nowrap;}
+.hero-stats{display:flex;gap:40px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);}
+.hstat .num{font-family:var(--serif);font-size:24px;color:var(--white);font-weight:600;display:block;}
 .hstat .lbl{font-size:12px;color:rgba(255,255,255,0.4);}
-
-/* LAYOUT */
-.layout{max-width:1100px;margin:0 auto;padding:40px 48px;display:grid;grid-template-columns:256px 1fr;gap:28px;align-items:start;}
-
-/* SIDEBAR */
+.layout{max-width:1100px;margin:0 auto;padding:40px 48px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start;}
 .sidebar{background:var(--white);border:1px solid var(--rule);border-radius:8px;overflow:hidden;position:sticky;top:76px;}
 .sb-head{padding:14px 20px;background:var(--navy);color:var(--white);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
-.sb-section{padding:18px 20px;border-bottom:1px solid var(--rule);}
+.sb-section{padding:16px 20px;border-bottom:1px solid var(--rule);}
 .sb-section:last-child{border-bottom:none;}
 .sb-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--mid);margin-bottom:10px;display:block;}
 .sb-option{display:flex;align-items:center;gap:8px;margin-bottom:7px;cursor:pointer;font-size:13px;}
 .sb-option input{accent-color:var(--blue);}
 .sb-count{margin-left:auto;font-size:11px;color:var(--mid);}
-.sb-reset{display:block;text-align:center;font-size:12px;color:var(--blue);text-decoration:none;padding:14px 20px;border-top:1px solid var(--rule);}
-
-/* RESULTS */
+.sb-reset{display:block;text-align:center;font-size:12px;color:var(--blue);padding:14px;border-top:1px solid var(--rule);cursor:pointer;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;font-family:var(--sans);}
 .results-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .results-count{font-size:13px;color:var(--mid);}
-.results-count strong{color:var(--text);font-weight:700;}
+.results-count strong{color:var(--text);}
 .sort-sel{padding:7px 12px;border:1px solid var(--rule);border-radius:4px;font-size:13px;font-family:var(--sans);}
-.card-list{display:flex;flex-direction:column;gap:16px;}
-
-/* COMPANY CARD */
-.ccard{background:var(--white);border:1px solid var(--rule);border-radius:8px;overflow:hidden;transition:box-shadow .2s,border-color .2s;}
-.ccard:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08);border-color:var(--rule-dk);}
-.ccard-body{display:grid;grid-template-columns:188px 1fr 172px;}
-.ccard-img{border-right:1px solid var(--rule);background:var(--paper);display:flex;align-items:center;justify-content:center;min-height:200px;}
-.img-ph{width:100%;height:100%;min-height:200px;background:linear-gradient(135deg,#e8edf3,#d1d9e6);display:flex;align-items:center;justify-content:center;}
-.img-ph span{font-size:11px;color:var(--mid);font-weight:600;letter-spacing:0.06em;}
+.card-list{display:flex;flex-direction:column;gap:14px;}
+.ccard{background:var(--white);border:1px solid var(--rule);border-radius:8px;overflow:hidden;transition:box-shadow .2s;}
+.ccard:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+.ccard-inner{display:grid;grid-template-columns:1fr 160px;}
 .ccard-info{padding:20px 24px;}
-.ccard-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;}
-.cname{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:3px;}
+.ccard-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
+.cname{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:2px;}
 .csub{font-size:12px;color:var(--mid);}
 .badges{display:flex;gap:5px;flex-wrap:wrap;}
-.bdg{font-size:10px;font-weight:700;letter-spacing:0.06em;padding:3px 9px;border-radius:3px;}
-.bdg-bl{background:var(--blue-lt);color:var(--blue);}
-.bdg-gr{background:var(--green-lt);color:var(--green);}
-.bdg-am{background:var(--amber-lt);color:var(--amber);}
-.bdg-gy{background:var(--paper);color:var(--mid);border:1px solid var(--rule);}
-.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);border-radius:5px;overflow:hidden;margin:14px 0;}
-.spec{padding:9px 12px;border-right:1px solid var(--rule);}
-.spec:last-child{border-right:none;}
-.spec-lbl{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--mid);margin-bottom:3px;}
-.spec-val{font-size:13px;font-weight:600;color:var(--text);}
-.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px;}
-.ctag{font-size:11px;padding:2px 9px;background:var(--paper);border:1px solid var(--rule);border-radius:3px;color:var(--mid);}
-.cdesc{font-size:13px;color:var(--mid);line-height:1.75;}
-
-/* ACTION PANEL */
-.ccard-action{border-left:1px solid var(--rule);padding:20px 18px;display:flex;flex-direction:column;gap:12px;}
-.rating-box{text-align:center;padding-bottom:12px;border-bottom:1px solid var(--rule);}
-.r-num{font-family:var(--serif);font-size:36px;font-weight:600;line-height:1;color:var(--text);}
-.r-stars{font-size:13px;color:#d97706;letter-spacing:1px;margin:3px 0;}
-.r-count{font-size:11px;color:var(--mid);}
-.action-group{display:flex;flex-direction:column;gap:6px;}
-.action-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mid);}
-.btn-contact{display:block;text-align:center;padding:9px 12px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;transition:all .2s;cursor:pointer;}
-.btn-c-primary{background:var(--navy);color:var(--white);border:none;}
-.btn-c-primary:hover{background:var(--blue);}
-.btn-c-secondary{background:var(--white);color:var(--navy);border:1px solid var(--rule-dk);}
-.btn-c-secondary:hover{border-color:var(--navy);}
-.btn-c-ghost{background:var(--paper);color:var(--mid);border:1px solid var(--rule);font-size:11px;}
-.action-note{font-size:10px;color:var(--mid);text-align:center;}
-
-
-
-/* MODAL */
+.bdg{font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;background:var(--blue-lt);color:var(--blue);}
+.ccard-addr{font-size:13px;color:var(--mid);margin-bottom:6px;}
+.ccard-tel{font-size:14px;font-weight:600;color:var(--text);}
+.ccard-action{border-left:1px solid var(--rule);padding:20px 16px;display:flex;flex-direction:column;gap:8px;justify-content:center;}
+.btn-c{display:block;text-align:center;padding:9px 12px;border-radius:4px;font-size:12px;font-weight:700;border:none;cursor:pointer;transition:all .2s;}
+.btn-navy{background:var(--navy);color:var(--white);}
+.btn-navy:hover{background:var(--blue);}
+.btn-outline{background:var(--white);color:var(--navy);border:1px solid var(--rule-dk);}
+.btn-outline:hover{border-color:var(--navy);}
+.pager{display:flex;gap:4px;justify-content:center;margin-top:24px;flex-wrap:wrap;}
+.pager-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:4px;font-size:13px;cursor:pointer;background:var(--white);color:var(--text);transition:all .2s;font-family:var(--sans);}
+.pager-btn.active,.pager-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
+.no-results{text-align:center;padding:60px 20px;color:var(--mid);}
+.no-results h3{font-family:var(--serif);font-size:20px;color:var(--text);margin-bottom:8px;}
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:500;display:none;align-items:center;justify-content:center;}
 .modal-overlay.open{display:flex;}
-.modal{background:var(--white);border-radius:10px;width:560px;max-width:92vw;max-height:90vh;overflow-y:auto;}
-.modal-head{padding:22px 28px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--white);z-index:1;}
-.modal-title{font-family:var(--serif);font-size:19px;font-weight:600;}
-.modal-close{background:none;border:none;font-size:22px;color:var(--mid);cursor:pointer;line-height:1;padding:2px 6px;}
+.modal{background:var(--white);border-radius:10px;width:540px;max-width:92vw;max-height:90vh;overflow-y:auto;}
+.modal-head{padding:20px 28px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--white);}
+.modal-title{font-family:var(--serif);font-size:18px;font-weight:600;}
+.modal-close{background:none;border:none;font-size:22px;color:var(--mid);cursor:pointer;}
 .modal-body{padding:24px 28px;}
-
-/* 仲介の説明バナー */
-.mediation-note{background:var(--blue-lt);border:1px solid #bfdbfe;border-radius:6px;padding:14px 18px;margin-bottom:20px;}
-.mediation-note .mn-head{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:4px;}
-.mediation-note .mn-body{font-size:12px;color:#1e40af;line-height:1.6;}
-
-.modal-company{background:var(--paper);border-radius:6px;padding:12px 16px;margin-bottom:20px;border:1px solid var(--rule);}
-.modal-company .cmp-name{font-weight:700;font-size:15px;margin-bottom:2px;}
-.modal-company .cmp-sub{font-size:12px;color:var(--mid);}
-
-.tab-row{display:flex;gap:0;border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-bottom:20px;}
-.tab-btn{flex:1;padding:10px 8px;text-align:center;font-size:12px;font-weight:700;background:var(--white);border:none;cursor:pointer;color:var(--mid);transition:all .2s;border-right:1px solid var(--rule);line-height:1.3;}
+.mediation-note{background:var(--blue-lt);border:1px solid #bfdbfe;border-radius:6px;padding:12px 16px;margin-bottom:20px;}
+.mn-head{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:3px;}
+.mn-body{font-size:12px;color:#1e40af;line-height:1.6;}
+.modal-company{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:12px 16px;margin-bottom:20px;}
+.mc-name{font-weight:700;font-size:15px;}
+.mc-sub{font-size:12px;color:var(--mid);}
+.tab-row{display:flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden;margin-bottom:20px;}
+.tab-btn{flex:1;padding:10px 6px;text-align:center;font-size:12px;font-weight:700;background:var(--white);border:none;border-right:1px solid var(--rule);cursor:pointer;color:var(--mid);font-family:var(--sans);transition:all .2s;}
 .tab-btn:last-child{border-right:none;}
 .tab-btn.active{background:var(--navy);color:var(--white);}
-
 .form-group{margin-bottom:14px;}
-.form-label{font-size:12px;font-weight:700;color:var(--text);margin-bottom:5px;display:flex;align-items:center;gap:6px;}
-.form-req{font-size:10px;color:var(--white);background:#dc2626;padding:1px 5px;border-radius:2px;font-weight:700;}
-.form-input,.form-select,.form-textarea{width:100%;padding:9px 13px;border:1px solid var(--rule);border-radius:5px;font-size:14px;font-family:var(--sans);transition:border-color .2s;}
+.form-label{font-size:12px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:6px;}
+.form-req{font-size:10px;color:var(--white);background:#dc2626;padding:1px 5px;border-radius:2px;}
+.form-input,.form-select,.form-textarea{width:100%;padding:9px 13px;border:1px solid var(--rule);border-radius:5px;font-size:14px;font-family:var(--sans);}
 .form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--blue);}
-.form-textarea{min-height:90px;resize:vertical;}
+.form-textarea{min-height:80px;resize:vertical;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form-privacy{font-size:11px;color:var(--mid);line-height:1.65;margin-bottom:16px;padding:12px 14px;background:var(--paper);border-radius:5px;border:1px solid var(--rule);}
-.btn-submit{width:100%;background:var(--navy);color:var(--white);padding:13px;border-radius:5px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background .2s;}
-.btn-submit:hover{background:var(--blue);}
-
-/* 工務店向けモーダル */
-.listing-modal-body{padding:24px 28px;}
-.lm-section{margin-bottom:24px;}
-.lm-section h3{font-family:var(--serif);font-size:17px;font-weight:600;margin-bottom:8px;}
-.lm-section p{font-size:13px;color:var(--mid);line-height:1.75;margin-bottom:12px;}
-.lm-merit{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
-.lm-merit-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;}
-.lm-merit-item .lm-check{color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px;}
-.lm-divider{border:none;border-top:1px solid var(--rule);margin:20px 0;}
-
-/* PAGINATION */
-.pager{display:flex;gap:4px;justify-content:center;margin-top:24px;}
-.pager a{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:4px;font-size:13px;text-decoration:none;color:var(--text);transition:all .2s;}
-.pager a.on,.pager a:hover{background:var(--navy);color:var(--white);border-color:var(--navy);}
-
-/* LISTING CTA */
-.listing-cta{background:var(--navy);border-radius:8px;padding:36px 40px;margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
-.lc-block h3{font-family:var(--serif);font-size:18px;color:var(--white);margin-bottom:8px;}
-.lc-block p{font-size:13px;color:rgba(255,255,255,0.55);line-height:1.75;margin-bottom:16px;}
-.btn-lc{display:inline-block;background:#d97706;color:var(--white);padding:10px 22px;border-radius:4px;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;border:none;}
-
-footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-size:12px;}
+.form-note{font-size:11px;color:var(--mid);line-height:1.65;margin-bottom:16px;padding:10px 14px;background:var(--paper);border-radius:5px;border:1px solid var(--rule);}
+.btn-submit{width:100%;background:var(--navy);color:var(--white);padding:12px;border-radius:5px;font-size:14px;font-weight:700;border:none;cursor:pointer;}
+footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-size:12px;margin-top:60px;}
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
 .footer-links{display:flex;gap:20px;}
 .footer-links a{color:rgba(255,255,255,0.3);text-decoration:none;}
-
-@media(max-width:960px){
-  nav{padding:0 20px;}
-  .hero{padding:48px 20px 36px;}
-  .search-form{grid-template-columns:1fr;}
-  .layout{grid-template-columns:1fr;padding:24px 20px;}
-  .sidebar{position:static;}
-  .ccard-body{grid-template-columns:1fr;}
-  .ccard-img{display:none;}
-  .ccard-action{border-left:none;border-top:1px solid var(--rule);}
-  .listing-cta{grid-template-columns:1fr;}
-  .footer-inner{flex-direction:column;gap:12px;}
-}
+@media(max-width:900px){nav{padding:0 20px;}.hero{padding:48px 20px 36px;}.search-bar{flex-direction:column;}.layout{grid-template-columns:1fr;padding:24px 20px;}.sidebar{position:static;}.ccard-inner{grid-template-columns:1fr;}.ccard-action{border-left:none;border-top:1px solid var(--rule);flex-direction:row;}.form-row{grid-template-columns:1fr;}.footer-inner{flex-direction:column;gap:12px;}}
 </style>
 </head>
 <body>
 
-<!-- ユーザー向け相談モーダル -->
-<div class="modal-overlay" id="modal-user">
+<div class="modal-overlay" id="modal">
   <div class="modal">
     <div class="modal-head">
-      <div class="modal-title" id="modal-title-text">相談・資料請求</div>
-      <button class="modal-close" onclick="closeModal('modal-user')">×</button>
+      <div class="modal-title">相談・資料請求</div>
+      <button class="modal-close" onclick="closeModal()">×</button>
     </div>
     <div class="modal-body">
-
-      <div class="mediation-note">
-        <div class="mn-head">当サイトが仲介します</div>
-        <div class="mn-body">送信された内容は神奈川工務店ナビ（運営：Mimosa Works）が受け取り、工務店へ取り次ぎます。個人情報は取り次ぎ先の工務店のみに共有されます。</div>
-      </div>
-
-      <div class="modal-company">
-        <div class="cmp-name" id="modal-cmp-name"></div>
-        <div class="cmp-sub" id="modal-cmp-sub"></div>
-      </div>
-
+      <div class="mediation-note"><div class="mn-head">当サイトが仲介します</div><div class="mn-body">送信内容はLocal Navi（運営：Mimosa Works）が受け取り、工務店へ取り次ぎます。</div></div>
+      <div class="modal-company"><div class="mc-name" id="modal-name"></div><div class="mc-sub" id="modal-sub"></div></div>
       <div class="tab-row">
-        <button class="tab-btn active" onclick="switchTab(this,'tab-consult')">無料相談を予約</button>
-        <button class="tab-btn" onclick="switchTab(this,'tab-doc')">資料を請求する</button>
-        <button class="tab-btn" onclick="switchTab(this,'tab-estimate')">見積もりを依頼</button>
+        <button class="tab-btn active" onclick="switchTab(this,'t-consult')">無料相談を予約</button>
+        <button class="tab-btn" onclick="switchTab(this,'t-doc')">資料を請求する</button>
+        <button class="tab-btn" onclick="switchTab(this,'t-estimate')">見積もりを依頼</button>
       </div>
-
-      <!-- 相談予約 -->
-      <div id="tab-consult">
+      <div id="t-consult">
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">お名前 <span class="form-req">必須</span></label>
-            <input class="form-input" type="text" placeholder="山田 太郎">
-          </div>
-          <div class="form-group">
-            <label class="form-label">電話番号 <span class="form-req">必須</span></label>
-            <input class="form-input" type="tel" placeholder="090-0000-0000">
-          </div>
+          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text" placeholder="山田 太郎"></div>
+          <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" type="tel" placeholder="090-0000-0000"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">メールアドレス <span class="form-req">必須</span></label>
-          <input class="form-input" type="email" placeholder="example@email.com">
-        </div>
+        <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email" placeholder="example@email.com"></div>
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">ご希望の相談方法</label>
-            <select class="form-select">
-              <option>電話で相談</option>
-              <option>メールで相談</option>
-              <option>Zoomで相談</option>
-              <option>ショールーム訪問</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">ご検討の時期</label>
-            <select class="form-select">
-              <option>できるだけ早く</option>
-              <option>1ヶ月以内</option>
-              <option>3ヶ月以内</option>
-              <option>半年以内</option>
-              <option>まだ未定</option>
-            </select>
-          </div>
+          <div class="form-group"><label class="form-label">相談方法</label><select class="form-select"><option>電話で相談</option><option>メールで相談</option><option>Zoomで相談</option><option>ショールーム訪問</option></select></div>
+          <div class="form-group"><label class="form-label">ご検討の時期</label><select class="form-select"><option>できるだけ早く</option><option>1ヶ月以内</option><option>3ヶ月以内</option><option>半年以内</option><option>まだ未定</option></select></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">ご相談内容（任意）</label>
-          <textarea class="form-textarea" placeholder="例：横浜市港北区で延床35坪の注文住宅を検討中。ZEH仕様・自然素材希望。予算4,000万円程度。"></textarea>
-        </div>
-        <div class="form-privacy">送信後、当サイト運営（Mimosa Works）より工務店に内容を転送します。2営業日以内に工務店からご連絡があります。個人情報はプライバシーポリシーに従い管理します。</div>
+        <div class="form-group"><label class="form-label">ご相談内容（任意）</label><textarea class="form-textarea" placeholder="工事の種類・エリア・ご要望などをご記入ください"></textarea></div>
+        <div class="form-note">送信後、当サイト運営より工務店に取り次ぎます。2営業日以内に工務店からご連絡があります。</div>
         <button class="btn-submit">無料相談を予約する</button>
       </div>
-
-      <!-- 資料請求 -->
-      <div id="tab-doc" style="display:none;">
-        <div id="nosite-doc-warn" style="display:none;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:14px 16px;margin-bottom:16px;">
-          <div style="font-size:12px;font-weight:700;color:#92400e;margin-bottom:4px;">この工務店はデジタル資料が未整備です</div>
-          <div style="font-size:12px;color:#78350f;line-height:1.6;">カタログ・施工事例集が用意されていない場合があります。「無料相談を予約」タブから直接ご連絡いただくことをおすすめします。</div>
-        </div>
+      <div id="t-doc" style="display:none">
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">お名前 <span class="form-req">必須</span></label>
-            <input class="form-input" type="text" placeholder="山田 太郎">
-          </div>
-          <div class="form-group">
-            <label class="form-label">メールアドレス <span class="form-req">必須</span></label>
-            <input class="form-input" type="email" placeholder="example@email.com">
-          </div>
+          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text"></div>
+          <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email"></div>
         </div>
-        <div class="form-group">
-          <label class="form-label">ご希望の資料</label>
-          <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--blue);"> 会社案内・パンフレット</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--blue);"> 施工事例集</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--blue);"> 坪単価・価格資料</label>
-            <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;"><input type="checkbox" style="accent-color:var(--blue);"> 標準仕様書</label>
-          </div>
-        </div>
-        <div class="form-privacy">当サイト運営（Mimosa Works）が工務店に資料送付を依頼します。資料の準備に数日かかる場合があります。</div>
+        <div class="form-note">当サイト運営が工務店に資料送付を依頼します。</div>
         <button class="btn-submit">資料を請求する</button>
       </div>
-
-      <!-- 見積もり -->
-      <div id="tab-estimate" style="display:none;">
+      <div id="t-estimate" style="display:none">
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">お名前 <span class="form-req">必須</span></label>
-            <input class="form-input" type="text" placeholder="山田 太郎">
-          </div>
-          <div class="form-group">
-            <label class="form-label">電話番号 <span class="form-req">必須</span></label>
-            <input class="form-input" type="tel" placeholder="090-0000-0000">
-          </div>
+          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text"></div>
+          <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" type="tel"></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">建設予定地</label>
-            <input class="form-input" type="text" placeholder="横浜市 港北区">
-          </div>
-          <div class="form-group">
-            <label class="form-label">工事の種類</label>
-            <select class="form-select">
-              <option>注文住宅・新築</option>
-              <option>リフォーム・増改築</option>
-              <option>外壁塗装・屋根</option>
-              <option>水回りリフォーム</option>
-              <option>耐震リフォーム</option>
-            </select>
-          </div>
+          <div class="form-group"><label class="form-label">工事の種類</label><select class="form-select"><option>注文住宅・新築</option><option>リフォーム・増改築</option><option>外壁塗装・屋根</option><option>水回りリフォーム</option><option>耐震リフォーム</option></select></div>
+          <div class="form-group"><label class="form-label">予算（目安）</label><select class="form-select"><option>2,000万円未満</option><option>2,000〜3,000万円</option><option>3,000〜4,000万円</option><option>4,000万円以上</option></select></div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">延床面積（目安）</label>
-            <select class="form-select">
-              <option>30坪未満</option>
-              <option>30〜35坪</option>
-              <option>35〜40坪</option>
-              <option>40〜50坪</option>
-              <option>50坪以上</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">ご予算（目安）</label>
-            <select class="form-select">
-              <option>2,000万円未満</option>
-              <option>2,000〜3,000万円</option>
-              <option>3,000〜4,000万円</option>
-              <option>4,000〜5,000万円</option>
-              <option>5,000万円以上</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">ご要望・条件（任意）</label>
-          <textarea class="form-textarea" placeholder="例：ZEH仕様・自然素材希望・ビルトインガレージ・3LDK想定"></textarea>
-        </div>
-        <div class="form-privacy">当サイト運営（Mimosa Works）が工務店に見積もり依頼を転送します。工務店より直接ご連絡があります。</div>
+        <div class="form-group"><label class="form-label">ご要望（任意）</label><textarea class="form-textarea" placeholder="工事内容・こだわり・エリアなどをご記入ください"></textarea></div>
+        <div class="form-note">当サイト運営が工務店に見積もり依頼を転送します。</div>
         <button class="btn-submit">見積もりを依頼する</button>
       </div>
-
     </div>
   </div>
 </div>
 
-<!-- 工務店向けモーダル -->
-<div class="modal-overlay" id="modal-biz">
-  <div class="modal">
-    <div class="modal-head">
-      <div class="modal-title">掲載・HP作成のご相談</div>
-      <button class="modal-close" onclick="closeModal('modal-biz')">×</button>
-    </div>
-    <div class="listing-modal-body">
-
-      <div class="lm-section">
-        <h3>無料で掲載する</h3>
-        <p>会社名・エリア・得意工事をお送りいただければ、掲載ページを作成します。費用は一切かかりません。Webサイト・施工事例写真がない場合でも掲載できます。</p>
-        <div class="lm-merit">
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>掲載費用：無料（永続）</span></div>
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>Webサイト・施工事例がなくても掲載可</span></div>
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>問い合わせはMimosa Worksが仲介・転送</span></div>
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>掲載後、情報の追加・修正は随時対応</span></div>
-        </div>
-      </div>
-
-      <hr class="lm-divider">
-
-      <div class="lm-section">
-        <h3>Webコンテンツ・HP作成の支援</h3>
-        <p>施工事例・ブログ・SNS投稿が不足している場合、Mimosa Worksのコンテンツ自動生成サービスをご利用いただけます。月1回30分のインタビューで、月20本のブログ・60件のSNS投稿を自動生成します。</p>
-        <div class="lm-merit">
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>月額3万円〜（30日間無料トライアルあり）</span></div>
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>施工事例・お役立ちコラム・Instagram投稿を自動生成</span></div>
-          <div class="lm-merit-item"><span class="lm-check">—</span><span>SEO最適化・自動投稿まで完結</span></div>
-        </div>
-      </div>
-
-      <hr class="lm-divider">
-
-      <div class="form-group">
-        <label class="form-label">会社名 <span class="form-req">必須</span></label>
-        <input class="form-input" type="text" placeholder="〇〇工務店">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">担当者名</label>
-          <input class="form-input" type="text" placeholder="山田 太郎">
-        </div>
-        <div class="form-group">
-          <label class="form-label">メールアドレス <span class="form-req">必須</span></label>
-          <input class="form-input" type="email" placeholder="info@example.com">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">ご相談内容</label>
-        <select class="form-select" style="margin-bottom:10px;">
-          <option>掲載のみ希望</option>
-          <option>掲載 + Webコンテンツ作成も相談したい</option>
-          <option>Webコンテンツ作成のみ相談したい</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label class="form-label">補足・ご質問（任意）</label>
-        <textarea class="form-textarea" placeholder="例：Webサイトはあるが施工事例が少ない。SNS運用も検討中。"></textarea>
-      </div>
-      <div class="form-privacy">送信内容はMimosa Works（hello@mimosaworks.com）に届きます。2営業日以内にご返信します。</div>
-      <button class="btn-submit">相談内容を送信する</button>
-    </div>
-  </div>
-</div>
-
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">神奈川工務店<strong>ナビ</strong></a>
+  <a href="index.html" class="nav-logo">Local<strong>Navi</strong><small>神奈川工務店</small></a>
   <div class="nav-center">
-    <a href="#">工務店を探す</a>
-    <a href="#">施工事例</a>
-    <a href="#">口コミ</a>
-    <a href="#">掲載について</a>
+    <a href="index.html" class="active">工務店を探す</a>
+    <a href="cases.html">施工事例</a>
+    <a href="listing.html">工務店の方へ</a>
   </div>
-  <a href="#" class="nav-cta" onclick="openBizModal();return false;">掲載・HP作成を相談する</a>
+  <a href="listing.html" class="nav-cta">掲載・HP作成を相談する</a>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-inner">
-    <span class="hero-kicker">Kanagawa Komuten Navi</span>
+    <span class="hero-kicker">Local Navi — Kanagawa</span>
     <h1>神奈川県の工務店を<br>比較して、相談する。</h1>
-    <p class="hero-lead">坪単価・施工エリア・得意分野・口コミをまとめて確認。気になる工務店に資料請求・見積もり依頼ができます。</p>
-    <div class="search-form">
-      <div class="sf-group">
-        <label>エリア</label>
-        <select class="sf-select">
-          <option>横浜市 全域</option>
-          <option>横浜市 港北区</option>
-          <option>横浜市 青葉区</option>
-          <option>横浜市 戸塚区</option>
-          <option>横浜市 都筑区</option>
-          <option>川崎市</option>
-          <option>鎌倉市・逗子市</option>
-          <option>藤沢市・茅ヶ崎市</option>
-          <option>相模原市</option>
-        </select>
-      </div>
-      <div class="sf-group">
-        <label>工事の種類</label>
-        <select class="sf-select">
-          <option>すべて</option>
-          <option>注文住宅・新築</option>
-          <option>リフォーム・増改築</option>
-          <option>外壁塗装・屋根</option>
-          <option>水回りリフォーム</option>
-          <option>耐震リフォーム</option>
-        </select>
-      </div>
-      <div class="sf-group">
-        <label>坪単価（目安）</label>
-        <select class="sf-select">
-          <option>指定なし</option>
-          <option>50万円未満</option>
-          <option>50〜70万円</option>
-          <option>70〜90万円</option>
-          <option>90万円以上</option>
-        </select>
-      </div>
-      <div class="sf-group">
-        <label>&nbsp;</label>
-        <button class="sf-btn">検索する</button>
-      </div>
+    <p class="hero-lead">神奈川県建設業許可業者名簿をもとに、工務店・建設会社を掲載。エリア・工事種別で絞り込んで無料相談できます。</p>
+    <div class="search-bar">
+      <input class="search-input" type="text" id="search-input" placeholder="会社名・住所で検索...">
+      <select class="search-select" id="area-filter">
+        <option value="">エリア（すべて）</option>
+        <option value="横浜市">横浜市</option>
+        <option value="川崎市">川崎市</option>
+        <option value="相模原市">相模原市</option>
+        <option value="横須賀市">横須賀市</option>
+        <option value="藤沢市">藤沢市</option>
+        <option value="平塚市">平塚市</option>
+        <option value="鎌倉市">鎌倉市</option>
+        <option value="小田原市">小田原市</option>
+        <option value="茅ヶ崎市">茅ヶ崎市</option>
+        <option value="厚木市">厚木市</option>
+        <option value="大和市">大和市</option>
+      </select>
+      <button class="search-btn" onclick="applyFilters()">検索</button>
     </div>
     <div class="hero-stats">
-      <div class="hstat"><span class="num">247</span><span class="lbl">掲載工務店数</span></div>
-      <div class="hstat"><span class="num">1,840</span><span class="lbl">施工事例数</span></div>
-      <div class="hstat"><span class="num">3,200</span><span class="lbl">口コミ件数</span></div>
+      <div class="hstat"><span class="num" id="stat-total">200</span><span class="lbl">掲載業者数</span></div>
+      <div class="hstat"><span class="num">18</span><span class="lbl">対応エリア</span></div>
+      <div class="hstat"><span class="num">無料</span><span class="lbl">相談・資料請求・見積もり</span></div>
     </div>
   </div>
 </div>
 
-<!-- MAIN LAYOUT -->
 <div class="layout">
-
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="sb-head">絞り込み条件</div>
     <div class="sb-section">
+      <span class="sb-label">エリア</span>
+      <label class="sb-option"><input type="radio" name="area" value="" checked onchange="applyFilters()"><span>すべて</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="横浜市" onchange="applyFilters()"><span>横浜市</span><span class="sb-count">69</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="川崎市" onchange="applyFilters()"><span>川崎市</span><span class="sb-count">38</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="相模原市" onchange="applyFilters()"><span>相模原市</span><span class="sb-count">14</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="横須賀市" onchange="applyFilters()"><span>横須賀市</span><span class="sb-count">14</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="藤沢市" onchange="applyFilters()"><span>藤沢市</span><span class="sb-count">14</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="小田原市" onchange="applyFilters()"><span>小田原市</span><span class="sb-count">11</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="厚木市" onchange="applyFilters()"><span>厚木市</span><span class="sb-count">6</span></label>
+      <label class="sb-option"><input type="radio" name="area" value="大和市" onchange="applyFilters()"><span>大和市</span><span class="sb-count">6</span></label>
+    </div>
+    <div class="sb-section">
       <span class="sb-label">工事の種類</span>
-      <label class="sb-option"><input type="checkbox" checked><span>注文住宅・新築</span><span class="sb-count">84</span></label>
-      <label class="sb-option"><input type="checkbox"><span>リフォーム・増改築</span><span class="sb-count">112</span></label>
-      <label class="sb-option"><input type="checkbox"><span>外壁塗装・屋根</span><span class="sb-count">67</span></label>
-      <label class="sb-option"><input type="checkbox"><span>水回りリフォーム</span><span class="sb-count">93</span></label>
-      <label class="sb-option"><input type="checkbox"><span>耐震リフォーム</span><span class="sb-count">45</span></label>
-      <label class="sb-option"><input type="checkbox"><span>店舗・事務所</span><span class="sb-count">18</span></label>
+      <label class="sb-option"><input type="checkbox" value="建築工事" onchange="applyFilters()"><span>建築工事（新築）</span></label>
+      <label class="sb-option"><input type="checkbox" value="大工工事" onchange="applyFilters()"><span>大工工事</span></label>
+      <label class="sb-option"><input type="checkbox" value="塗装工事" onchange="applyFilters()"><span>塗装工事</span></label>
+      <label class="sb-option"><input type="checkbox" value="内装仕上工事" onchange="applyFilters()"><span>内装仕上工事</span></label>
+      <label class="sb-option"><input type="checkbox" value="解体工事" onchange="applyFilters()"><span>解体工事</span></label>
     </div>
-    <div class="sb-section">
-      <span class="sb-label">特徴・こだわり</span>
-      <label class="sb-option"><input type="checkbox"><span>ZEH・省エネ住宅</span><span class="sb-count">52</span></label>
-      <label class="sb-option"><input type="checkbox"><span>高気密・高断熱</span><span class="sb-count">61</span></label>
-      <label class="sb-option"><input type="checkbox"><span>自然素材・無垢材</span><span class="sb-count">38</span></label>
-      <label class="sb-option"><input type="checkbox"><span>自社施工</span><span class="sb-count">134</span></label>
-      <label class="sb-option"><input type="checkbox"><span>土地探しサポート</span><span class="sb-count">44</span></label>
-      <label class="sb-option"><input type="checkbox"><span>保証10年以上</span><span class="sb-count">77</span></label>
-    </div>
-    <div class="sb-section">
-      <span class="sb-label">坪単価</span>
-      <label class="sb-option"><input type="radio" name="price"><span>50万円未満</span><span class="sb-count">22</span></label>
-      <label class="sb-option"><input type="radio" name="price"><span>50〜65万円</span><span class="sb-count">58</span></label>
-      <label class="sb-option"><input type="radio" name="price"><span>65〜80万円</span><span class="sb-count">74</span></label>
-      <label class="sb-option"><input type="radio" name="price"><span>80〜100万円</span><span class="sb-count">41</span></label>
-      <label class="sb-option"><input type="radio" name="price"><span>100万円以上</span><span class="sb-count">12</span></label>
-    </div>
-    <div class="sb-section">
-      <span class="sb-label">口コミ評価</span>
-      <label class="sb-option"><input type="checkbox"><span>4.5以上</span><span class="sb-count">31</span></label>
-      <label class="sb-option"><input type="checkbox"><span>4.0以上</span><span class="sb-count">89</span></label>
-      <label class="sb-option"><input type="checkbox"><span>3.5以上</span><span class="sb-count">162</span></label>
-    </div>
-    <div class="sb-section">
-      <span class="sb-label">その他</span>
-      <label class="sb-option"><input type="checkbox"><span>創業20年以上</span><span class="sb-count">94</span></label>
-      <label class="sb-option"><input type="checkbox"><span>モデルハウスあり</span><span class="sb-count">43</span></label>
-      <label class="sb-option"><input type="checkbox"><span>オンライン相談可</span><span class="sb-count">67</span></label>
-    </div>
-    <a href="#" class="sb-reset">条件をリセット</a>
+    <button class="sb-reset" onclick="resetFilters()">条件をリセット</button>
   </div>
-
-  <!-- RESULTS -->
   <div>
     <div class="results-bar">
-      <div class="results-count">横浜市の工務店 <strong>84件</strong> 中 1〜10件</div>
-      <select class="sort-sel">
-        <option>おすすめ順</option>
-        <option>口コミ評価が高い順</option>
-        <option>坪単価が低い順</option>
-        <option>施工実績が多い順</option>
+      <div class="results-count" id="results-count"><strong>200件</strong> を表示中</div>
+      <select class="sort-sel" id="sort-sel" onchange="applyFilters()">
+        <option value="default">並び順（デフォルト）</option>
+        <option value="name">社名順（五十音）</option>
+        <option value="area">エリア順</option>
       </select>
     </div>
-
-    <div class="card-list">
-
-      <!-- CARD 1 -->
-      <div class="ccard">
-        <div class="ccard-body">
-          <div class="ccard-img"><div class="img-ph"><span>施工事例写真</span></div></div>
-          <div class="ccard-info">
-            <div class="ccard-head">
-              <div>
-                <div class="cname">せらら工房</div>
-                <div class="csub">横浜市 全域対応 / 創業2003年</div>
-              </div>
-              <div class="badges">
-                <span class="bdg bdg-bl">注文住宅</span>
-                <span class="bdg bdg-gr">ZEH対応</span>
-                <span class="bdg bdg-am">自社施工</span>
-              </div>
-            </div>
-            <div class="specs">
-              <div class="spec"><div class="spec-lbl">坪単価</div><div class="spec-val">65〜85万円</div></div>
-              <div class="spec"><div class="spec-lbl">施工実績</div><div class="spec-val">350棟以上</div></div>
-              <div class="spec"><div class="spec-lbl">アフター保証</div><div class="spec-val">最長20年</div></div>
-              <div class="spec"><div class="spec-lbl">対応エリア</div><div class="spec-val">横浜市全域</div></div>
-            </div>
-            <div class="ctags">
-              <span class="ctag">レンガの家</span>
-              <span class="ctag">高気密・高断熱</span>
-              <span class="ctag">耐震等級3</span>
-              <span class="ctag">断熱等級6</span>
-              <span class="ctag">自然素材</span>
-              <span class="ctag">土地探しサポート</span>
-            </div>
-            <div class="cdesc">本物のレンガを外壁に用いた注文住宅に特化した横浜市の工務店。設計・施工・アフターを自社完結。ZEH・断熱等級6に対応し、耐震等級3を標準仕様とする。土地探しから資金計画まで一括サポートを提供。</div>
-          </div>
-          <div class="ccard-action">
-            <a href="navi_reviews_serara.html" class="rating-box" style="text-decoration:none;display:block;">
-              <div class="r-num">4.7</div>
-              <div class="r-stars">★★★★★</div>
-              <div class="r-count" style="color:var(--blue);text-decoration:underline;">口コミ 38件</div>
-            </a>
-            <div class="action-group">
-              <div class="action-label">相談・見積もり</div>
-              <button class="btn-contact btn-c-primary" onclick="openUserModal('せらら工房','横浜市 / 注文住宅',false,'consult')">無料相談を予約する</button>
-              <button class="btn-contact btn-c-secondary" onclick="openUserModal('せらら工房','横浜市 / 注文住宅',false,'doc')">資料を請求する</button>
-              <button class="btn-contact btn-c-secondary" onclick="openUserModal('せらら工房','横浜市 / 注文住宅',false,'estimate')">見積もりを依頼する</button>
-              <button class="btn-contact btn-c-ghost">施工事例を見る</button>
-            </div>
-            <div class="action-note">最短翌営業日に返信</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 2 -->
-      <div class="ccard">
-        <div class="ccard-body">
-          <div class="ccard-img"><div class="img-ph"><span>施工事例写真</span></div></div>
-          <div class="ccard-info">
-            <div class="ccard-head">
-              <div>
-                <div class="cname">松尾工務店</div>
-                <div class="csub">横浜市 / 創業1915年（111年の実績）</div>
-              </div>
-              <div class="badges">
-                <span class="bdg bdg-bl">新築・リフォーム</span>
-                <span class="bdg bdg-am">自社施工</span>
-                <span class="bdg bdg-gy">老舗工務店</span>
-              </div>
-            </div>
-            <div class="specs">
-              <div class="spec"><div class="spec-lbl">坪単価</div><div class="spec-val">要見積もり</div></div>
-              <div class="spec"><div class="spec-lbl">施工実績</div><div class="spec-val">非公開</div></div>
-              <div class="spec"><div class="spec-lbl">アフター保証</div><div class="spec-val">要確認</div></div>
-              <div class="spec"><div class="spec-lbl">対応エリア</div><div class="spec-val">横浜市全域</div></div>
-            </div>
-            <div class="ctags">
-              <span class="ctag">木造在来工法</span>
-              <span class="ctag">新築一戸建て</span>
-              <span class="ctag">増改築</span>
-              <span class="ctag">外壁・屋根</span>
-            </div>
-            <div class="cdesc">1915年創業、111年の歴史を持つ老舗工務店。新築から増改築・リフォームまで対応。木造在来工法を得意とし、地元横浜での長年の施工実績を持つ。</div>
-          </div>
-          <div class="ccard-action">
-            <div class="rating-box" style="cursor:default;">
-              <div class="r-num">4.3</div>
-              <div class="r-stars">★★★★☆</div>
-              <div class="r-count">口コミ 12件</div>
-            </div>
-            <div class="action-group">
-              <div class="action-label">相談・見積もり</div>
-              <button class="btn-contact btn-c-primary" onclick="openUserModal('松尾工務店','横浜市 / 新築・リフォーム',false,'consult')">無料相談を予約する</button>
-              <button class="btn-contact btn-c-secondary" onclick="openUserModal('松尾工務店','横浜市 / 新築・リフォーム',false,'doc')">資料を請求する</button>
-              <button class="btn-contact btn-c-secondary" onclick="openUserModal('松尾工務店','横浜市 / 新築・リフォーム',false,'estimate')">見積もりを依頼する</button>
-              <button class="btn-contact btn-c-ghost">施工事例を見る</button>
-            </div>
-            <div class="action-note">電話・メール対応可</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- CARD 3 - NO SITE -->
-      <div class="ccard">
-        <div class="ccard-body">
-          <div class="ccard-img"><div class="img-ph"><span>写真未登録</span></div></div>
-          <div class="ccard-info">
-            <div class="ccard-head">
-              <div>
-                <div class="cname">港北建設</div>
-                <div class="csub">横浜市 港北区・都筑区 / 創業1988年</div>
-              </div>
-              <div class="badges">
-                <span class="bdg bdg-bl">リフォーム専門</span>
-                <span class="bdg bdg-gy">情報整備中</span>
-              </div>
-            </div>
-            <div class="specs">
-              <div class="spec"><div class="spec-lbl">坪単価</div><div class="spec-val">45〜65万円</div></div>
-              <div class="spec"><div class="spec-lbl">施工実績</div><div class="spec-val">200件以上</div></div>
-              <div class="spec"><div class="spec-lbl">アフター保証</div><div class="spec-val">要確認</div></div>
-              <div class="spec"><div class="spec-lbl">対応エリア</div><div class="spec-val">港北・都筑・緑区</div></div>
-            </div>
-            <div class="ctags">
-              <span class="ctag">水回りリフォーム</span>
-              <span class="ctag">外壁・屋根</span>
-              <span class="ctag">内装リフォーム</span>
-            </div>
-            <div class="cdesc">港北区を中心に35年以上の施工実績を持つ地域密着型工務店。水回りリフォームと外壁塗装を得意とする。現在、Webコンテンツ・施工事例の整備を進めている。</div>
-          </div>
-          <div class="ccard-action">
-            <div class="rating-box">
-              <div class="r-num" style="font-size:20px;color:var(--mid);margin-bottom:4px;">評価未登録</div>
-              <div class="r-stars" style="color:var(--rule);">★★★★★</div>
-              <div class="r-count">口コミ募集中</div>
-            </div>
-            <div class="action-group">
-              <div class="action-label">相談・見積もり</div>
-              <button class="btn-contact btn-c-primary" onclick="openUserModal('港北建設','横浜市 港北区 / リフォーム',true,'consult')">無料相談を予約する</button>
-              <button class="btn-contact btn-c-secondary" onclick="openUserModal('港北建設','横浜市 港北区 / リフォーム',true,'doc')">資料を請求する</button>
-              <button class="btn-contact btn-c-secondary" onclick="openUserModal('港北建設','横浜市 港北区 / リフォーム',true,'estimate')">見積もりを依頼する</button>
-              <button class="btn-contact btn-c-ghost" style="opacity:.4;pointer-events:none;">施工事例（整備中）</button>
-            </div>
-            <div class="action-note">当サイト経由で取り次ぎます</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="pager">
-      <a href="#" class="on">1</a>
-      <a href="#">2</a><a href="#">3</a><a href="#">4</a><a href="#">5</a>
-      <a href="#">...</a><a href="#">9</a>
-    </div>
-
-    <div class="listing-cta">
-      <div class="lc-block">
-        <h3>工務店の皆様へ — 無料で掲載できます</h3>
-        <p>会社名・エリア・得意工事をお送りいただくだけで掲載ページを作成します。Webサイト・施工事例がない場合でも掲載可能です。問い合わせはすべてMimosa Worksが仲介します。</p>
-        <button class="btn-lc" onclick="openBizModal()">掲載・HP作成を相談する</button>
-      </div>
-      <div class="lc-block">
-        <h3>コンテンツが不足している場合</h3>
-        <p>施工事例・ブログ・SNS投稿をAIで自動生成するサービスを提供しています。月30分の作業のみ。月額3万円から。掲載情報を充実させることで問い合わせ数が増えます。</p>
-        <button class="btn-lc" onclick="openBizModal()">Webコンテンツ作成を相談する</button>
-      </div>
-    </div>
+    <div class="card-list" id="card-list"></div>
+    <div class="pager" id="pager"></div>
   </div>
 </div>
 
 <footer>
   <div class="footer-inner">
-    <div>神奈川工務店ナビ / 運営：Mimosa Works / hello@mimosaworks.com</div>
+    <div>Local Navi 神奈川工務店 / 運営：Mimosa Works / hello@mimosaworks.com</div>
     <div class="footer-links">
-      <a href="#">掲載について</a>
+      <a href="listing.html">工務店の方へ</a>
       <a href="#">プライバシーポリシー</a>
       <a href="#">利用規約</a>
     </div>
   </div>
 </footer>
 
-<script>
-function openUserModal(name, sub, nosite, tab) {
-  document.getElementById('modal-cmp-name').textContent = name;
-  document.getElementById('modal-cmp-sub').textContent = sub;
-  // nositeフラグ
-  const nsWarn = document.getElementById('nosite-doc-warn');
-  if(nsWarn) nsWarn.style.display = nosite ? 'block' : 'none';
-  // タブ切り替え
-  const tabMap = {consult:'tab-consult', doc:'tab-doc', estimate:'tab-estimate'};
-  document.querySelectorAll('#modal-user .tab-btn').forEach((b,i) => {
-    const tabs = ['tab-consult','tab-doc','tab-estimate'];
-    b.classList.toggle('active', tabs[i] === tabMap[tab]);
-  });
-  ['tab-consult','tab-doc','tab-estimate'].forEach(id => {
-    document.getElementById(id).style.display = id === tabMap[tab] ? 'block' : 'none';
-  });
-  document.getElementById('modal-user').classList.add('open');
-}
-function openBizModal() {
-  document.getElementById('modal-biz').classList.add('open');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
-function switchTab(btn, tabId) {
-  const tabs = ['tab-consult','tab-doc','tab-estimate'];
-  document.querySelectorAll('#modal-user .tab-btn').forEach((b,i) => {
-    b.classList.toggle('active', tabs[i] === tabId);
-  });
-  tabs.forEach(id => {
-    document.getElementById(id).style.display = id === tabId ? 'block' : 'none';
-  });
-}
-// オーバーレイクリックで閉じる
-['modal-user','modal-biz'].forEach(id => {
-  document.getElementById(id).addEventListener('click', function(e) {
-    if(e.target === this) closeModal(id);
-  });
-});
-</script>
+<script src="app.js"></script>
 </body>
 </html>
