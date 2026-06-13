@@ -3,18 +3,442 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local Navi - 地域の専門家を探す</title>
-  <meta name="description" content="工務店・歯科・クリニックなど地域の専門家を簡単に検索できるポータルサイト">
-  <meta http-equiv="refresh" content="0; url=/komuten/">
+  <title>Local Navi — 地域の専門家を、もっと身近に</title>
+  <meta name="description" content="工務店・歯科クリニックなど、地域の信頼できる専門家を簡単に探せる検索ポータル。神奈川県の工務店12,623件、全国の歯科52,985件を掲載。">
   <style>
-    body { font-family: 'Hiragino Sans', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: #f5f5f5; }
-    .box { text-align: center; }
-    a { color: #0066cc; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0A0A0A;
+      --navy-mid:#141414;
+      --steel:   #1E1E1E;
+      --accent:  #C9A84C;
+      --accent-light: #E2C47A;
+      --gold:    #C9A84C;
+      --white:   #FFFFFF;
+      --off-white: #F5F5F5;
+      --gray-100: #2A2A2A;
+      --gray-400: #888888;
+      --gray-600: #AAAAAA;
+      --text:    #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Yu Gothic Medium', 'Meiryo', sans-serif;
+      background: #0A0A0A;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px;
+      height: 60px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo {
+      font-size: 18px; font-weight: 700; color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .nav-logo span { color: var(--accent-light); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 12px; font-weight: 700;
+      padding: 8px 18px; border-radius: 4px;
+      text-decoration: none; letter-spacing: 0.05em;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy);
+      padding: 140px 40px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(42,127,232,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent-light);
+      text-transform: uppercase;
+      border: 1px solid rgba(91,163,245,0.4);
+      padding: 4px 14px; border-radius: 2px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent-light);
+    }
+    .hero-sub {
+      font-size: 16px; color: var(--gray-400);
+      max-width: 480px; margin: 0 auto 48px;
+      line-height: 1.8;
+    }
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-bottom: 56px; flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-size: 36px; font-weight: 800; color: var(--white);
+      letter-spacing: -0.02em; display: block;
+    }
+    .stat-label { font-size: 11px; color: var(--gray-400); letter-spacing: 0.05em; }
+
+    .hero-divider {
+      width: 1px; background: rgba(255,255,255,0.15); align-self: stretch;
+    }
+
+    /* ── CATEGORY CARDS ── */
+    .categories {
+      padding: 80px 40px;
+      background: #111111;
+    }
+    .section-label {
+      text-align: center;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(20px, 3vw, 28px); font-weight: 800;
+      color: var(--white); margin-bottom: 48px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 900px; margin: 0 auto;
+    }
+
+    .cat-card {
+      background: #1A1A1A;
+      border: 1px solid #2A2A2A;
+      border-radius: 8px;
+      padding: 36px 32px;
+      text-decoration: none;
+      color: var(--white);
+      display: flex; flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .cat-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .cat-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.6); transform: translateY(-3px); }
+    .cat-card:hover::after { transform: scaleX(1); }
+
+    .cat-card.coming-soon {
+      opacity: 0.4; pointer-events: none; cursor: default;
+    }
+    .cat-icon { display: none; }
+    .cat-name {
+      font-size: 18px; font-weight: 800; color: var(--white);
+      margin-bottom: 8px;
+    }
+    .cat-desc {
+      font-size: 13px; color: #999999;
+      margin-bottom: 20px; line-height: 1.7; flex: 1;
+    }
+    .cat-badge {
+      display: inline-block;
+      background: #222222;
+      border: 1px solid #333333;
+      color: #888888;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 2px;
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+    }
+    .cat-link {
+      font-size: 13px; font-weight: 700;
+      color: var(--gold);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cat-link::after { content: '→'; }
+
+    .coming-label {
+      display: inline-block;
+      background: #222222;
+      color: #666666;
+      font-size: 11px; font-weight: 700;
+      padding: 4px 10px; border-radius: 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── LISTING CTA (営業導線) ── */
+    .listing-cta {
+      background: var(--navy);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .listing-cta-inner {
+      max-width: 640px; margin: 0 auto;
+    }
+    .listing-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.15em;
+      color: var(--gold); text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .listing-cta h2 {
+      font-size: clamp(22px, 3.5vw, 34px);
+      font-weight: 800; color: var(--white);
+      margin-bottom: 16px; line-height: 1.3;
+    }
+    .listing-cta p {
+      font-size: 14px; color: var(--gray-400);
+      margin-bottom: 36px; line-height: 1.8;
+    }
+    .listing-btn-group {
+      display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 14px; font-weight: 800;
+      padding: 14px 32px; border-radius: 4px;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+      font-size: 14px; font-weight: 700;
+      padding: 14px 32px; border-radius: 4px;
+      text-decoration: none; letter-spacing: 0.04em;
+      transition: border-color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--white); }
+
+    .merit-list {
+      display: flex; justify-content: center; gap: 32px;
+      flex-wrap: wrap; margin-top: 40px;
+    }
+    .merit-item {
+      font-size: 12px; color: var(--gray-400);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .merit-item::before {
+      content: '✓';
+      color: var(--gold); font-weight: 700;
+    }
+
+    /* ── FLOW ── */
+    .flow-section {
+      padding: 80px 40px;
+      background: #0A0A0A;
+    }
+    .flow-grid {
+      display: flex; justify-content: center; gap: 0;
+      max-width: 800px; margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .flow-step {
+      flex: 1; min-width: 160px;
+      text-align: center; padding: 0 16px;
+      position: relative;
+    }
+    .flow-step:not(:last-child)::after {
+      content: '→';
+      position: absolute; right: -8px; top: 20px;
+      color: var(--gray-400); font-size: 18px;
+    }
+    .flow-num {
+      width: 44px; height: 44px;
+      background: var(--gold); color: #0A0A0A;
+      border-radius: 50%;
+      font-size: 16px; font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 12px;
+    }
+    .flow-label { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .flow-desc { font-size: 11px; color: #888888; line-height: 1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      padding: 32px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    footer p { font-size: 12px; color: var(--gray-400); }
+    footer a { color: var(--gray-400); text-decoration: none; margin: 0 8px; }
+    footer a:hover { color: var(--white); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .hero { padding: 120px 24px 80px; }
+      .hero-stats { gap: 24px; }
+      .stat-num { font-size: 28px; }
+      .categories, .listing-cta, .flow-section { padding: 60px 24px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .flow-step:not(:last-child)::after { display: none; }
+      .listing-btn-group { flex-direction: column; align-items: center; }
+      footer { padding: 24px 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cat-card, .cat-card::after { transition: none; }
+    }
   </style>
 </head>
 <body>
-  <div class="box">
-    <p>リダイレクト中... <a href="/komuten/">工務店検索はこちら</a></p>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Local<span>Navi</span></div>
+  <a href="#listing" class="nav-cta">掲載のご案内</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">地域密着型 専門家検索</div>
+  <h1>信頼できる地域の専門家を、<br><em>すぐ近くで</em>見つける</h1>
+  <p class="hero-sub">工務店・歯科クリニックなど、あなたの地域で長年活躍する専門家を一覧で比較・相談できます。</p>
+
+  <div class="hero-stats">
+    <div class="stat-item">
+      <span class="stat-num">12,623</span>
+      <span class="stat-label">工務店・建設業者（神奈川県）</span>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">52,985</span>
+      <span class="stat-label">歯科・クリニック（全国）</span>
+    </div>
   </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories">
+  <p class="section-label">カテゴリ</p>
+  <h2 class="section-title">探したい業界を選ぶ</h2>
+
+  <div class="card-grid">
+    <a href="/komuten/" class="cat-card">
+      <div class="cat-name">工務店・建設</div>
+      <p class="cat-desc">リフォーム・新築・修繕など、住まいに関わるプロを地域・工事種別で絞り込み検索。</p>
+      <div class="cat-badge">神奈川県 12,623件</div>
+      <div class="cat-link">検索する</div>
+    </a>
+
+    <a href="/dental/" class="cat-card">
+      <div class="cat-name">歯科・クリニック</div>
+      <p class="cat-desc">一般歯科・矯正・小児歯科など、近くの歯科医院を土日診療・診療科目で絞り込み。</p>
+      <div class="cat-badge">全国 52,985件</div>
+      <div class="cat-link">検索する</div>
+    </a>
+
+    <div class="cat-card coming-soon">
+      <div class="cat-name">美容室・ヘアサロン</div>
+      <p class="cat-desc">カット・カラー・パーマなど、得意施術やスタイリストを比較しながら選べる美容室を掲載予定。</p>
+      <span class="coming-label">COMING SOON</span>
+    </div>
+
+    <div class="cat-card coming-soon">
+      <div class="cat-name">保険代理店</div>
+      <p class="cat-desc">生命・医療・損害保険など、複数社のプランを比較しながら相談できる代理店を掲載予定。</p>
+      <span class="coming-label">COMING SOON</span>
+    </div>
+
+    <div class="cat-card coming-soon">
+      <div class="cat-name">士業</div>
+      <p class="cat-desc">弁護士・税理士・司法書士など、法律・税務のプロを地域から探せます。</p>
+      <span class="coming-label">COMING SOON</span>
+    </div>
+
+    <div class="cat-card coming-soon">
+      <div class="cat-name">飲食</div>
+      <p class="cat-desc">地域に根ざした飲食店を、料理ジャンル・シーン別に探せます。</p>
+      <span class="coming-label">COMING SOON</span>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-section">
+  <p class="section-label">使い方</p>
+  <h2 class="section-title" style="margin-bottom:48px; color: var(--white);">3ステップで相談まで完結</h2>
+  <div class="flow-grid">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <div class="flow-label">カテゴリを選ぶ</div>
+      <div class="flow-desc">工務店・歯科など<br>探したい専門家を選択</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <div class="flow-label">地域・条件で絞る</div>
+      <div class="flow-desc">エリア・診療科目・<br>営業日などで絞り込み</div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <div class="flow-label">相談・問い合わせ</div>
+      <div class="flow-desc">フォームから<br>直接相談・資料請求</div>
+    </div>
+  </div>
+</section>
+
+<!-- LISTING CTA（営業導線） -->
+<section class="listing-cta" id="listing">
+  <div class="listing-cta-inner">
+    <p class="listing-eyebrow">事業者の方へ</p>
+    <h2>Local Naviに掲載して、<br>新規顧客との接点を作る</h2>
+    <p>地域の見込み顧客が毎日検索しています。まずはサイトへ掲載し、問い合わせを増やしましょう。</p>
+    <div class="listing-btn-group">
+      <a href="/komuten/listing.html" class="btn-primary">工務店の方はこちら</a>
+      <a href="/dental/listing.html" class="btn-secondary">歯科の方はこちら</a>
+    </div>
+    <div class="merit-list">
+      <div class="merit-item">掲載後すぐ公開</div>
+      <div class="merit-item">問い合わせを直接受け取れる</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="/komuten/">工務店検索</a>
+    <a href="/dental/">歯科検索</a>
+    <a href="#listing">掲載のご案内</a>
+  </p>
+  <p style="margin-top:12px;">© 2026 Local Navi — Mimosa Works</p>
+</footer>
+
 </body>
 </html>
