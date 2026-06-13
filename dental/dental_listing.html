@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>歯科・クリニックの掲載について — Local Navi</title>
+<meta name="description" content="Local Naviへの歯科・クリニックの掲載は無料。Webサイトがない場合でも掲載できます。AIによるコンテンツ作成支援も提供。">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --teal:#0f5c5c;--teal-lt:#e6f4f4;--teal-mid:#1a8080;--teal-dk:#0a3d3d;
+  --paper:#f8fafc;--white:#fff;--rule:#e2e8f0;--rule-dk:#cbd5e1;
+  --mid:#64748b;--text:#0f172a;--amber:#d97706;
+  --green:#15803d;--green-lt:#dcfce7;
+  --serif:'Noto Serif JP',serif;--sans:'Noto Sans JP',sans-serif;
+}
+body{background:var(--paper);font-family:var(--sans);color:var(--text);font-size:15px;line-height:1.75;}
+nav{background:var(--teal-dk);padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.nav-logo{font-family:var(--serif);font-size:18px;color:var(--white);text-decoration:none;}
+.nav-logo strong{color:#5eead4;}
+.nav-logo small{font-size:11px;color:rgba(255,255,255,0.4);margin-left:8px;font-family:var(--sans);}
+.nav-center a{color:rgba(255,255,255,0.65);text-decoration:none;font-size:13px;padding:0 18px;height:60px;display:inline-flex;align-items:center;border-bottom:2px solid transparent;transition:all .2s;}
+.nav-center a:hover,.nav-center a.active{color:var(--white);border-bottom-color:#5eead4;}
+.nav-cta{background:var(--amber);color:var(--white);padding:9px 20px;border-radius:4px;font-size:12px;font-weight:700;text-decoration:none;}
+
+.hero{background:var(--teal-dk);padding:64px 48px 56px;}
+.hero-inner{max-width:960px;margin:0 auto;}
+.h-kicker{font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#5eead4;margin-bottom:20px;display:block;}
+.h1{font-family:var(--serif);font-size:clamp(28px,4vw,48px);color:var(--white);font-weight:600;line-height:1.2;margin-bottom:20px;}
+.h-lead{font-size:16px;color:rgba(255,255,255,0.6);max-width:560px;line-height:1.85;margin-bottom:36px;}
+.hero-plans{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:640px;}
+.hplan{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:22px;}
+.hplan-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:8px;}
+.hplan-price{font-family:var(--serif);font-size:34px;color:var(--white);font-weight:600;letter-spacing:-0.02em;line-height:1;margin-bottom:4px;}
+.hplan-note{font-size:12px;color:rgba(255,255,255,0.35);}
+.hplan.featured{background:rgba(217,119,6,0.15);border-color:rgba(217,119,6,0.35);}
+.hplan.featured .hplan-price{color:#fcd34d;}
+
+.main{max-width:960px;margin:0 auto;padding:64px 48px;}
+.section{margin-bottom:64px;}
+.sec-eye{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:16px;display:block;}
+.sec-h2{font-family:var(--serif);font-size:clamp(26px,3.5vw,38px);font-weight:600;letter-spacing:-0.02em;margin-bottom:20px;line-height:1.2;}
+.sec-lead{font-size:16px;color:var(--mid);line-height:1.85;max-width:600px;margin-bottom:36px;}
+
+.merit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.merit-card{background:var(--white);border:1px solid var(--rule);border-radius:8px;padding:26px;}
+.mc-title{font-weight:700;font-size:16px;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.mc-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;}
+.mc-body{font-size:14px;color:var(--mid);line-height:1.75;}
+
+.flow{display:flex;flex-direction:column;gap:0;}
+.flow-item{display:grid;grid-template-columns:44px 1fr;gap:18px;position:relative;}
+.flow-item:not(:last-child)::before{content:'';position:absolute;left:21px;top:44px;bottom:-20px;width:2px;background:var(--rule);}
+.flow-num{width:44px;height:44px;border-radius:50%;background:var(--teal);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:17px;font-weight:600;flex-shrink:0;z-index:1;}
+.flow-content{padding-bottom:36px;}
+.flow-title{font-weight:700;font-size:15px;margin-bottom:5px;padding-top:10px;}
+.flow-body{font-size:14px;color:var(--mid);line-height:1.75;}
+.flow-note{margin-top:6px;font-size:12px;color:var(--teal-mid);background:var(--teal-lt);padding:6px 12px;border-radius:4px;display:inline-block;}
+
+.content-plan{background:var(--teal-dk);border-radius:10px;padding:36px;margin-bottom:36px;}
+.cp-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;}
+.cp-title{font-family:var(--serif);font-size:22px;color:var(--white);font-weight:600;margin-bottom:5px;}
+.cp-sub{font-size:13px;color:rgba(255,255,255,0.45);}
+.cp-price-num{font-family:var(--serif);font-size:34px;color:#fcd34d;font-weight:600;letter-spacing:-0.02em;line-height:1;}
+.cp-price-note{font-size:11px;color:rgba(255,255,255,0.35);}
+.cp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.08);border-radius:7px;overflow:hidden;margin-bottom:20px;}
+.cp-item{background:rgba(255,255,255,0.04);padding:18px;}
+.cp-item-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:5px;}
+.cp-item-val{font-family:var(--serif);font-size:26px;color:var(--white);font-weight:600;line-height:1;margin-bottom:2px;}
+.cp-item-unit{font-size:11px;color:rgba(255,255,255,0.35);}
+.cp-merits{display:flex;flex-direction:column;gap:7px;}
+.cp-merit{display:flex;align-items:flex-start;gap:9px;font-size:13px;color:rgba(255,255,255,0.65);}
+.cp-merit::before{content:'—';color:#fcd34d;flex-shrink:0;margin-top:1px;}
+
+.faq-list{display:flex;flex-direction:column;gap:0;}
+.faq-item{border-top:1px solid var(--rule);}
+.faq-item:last-child{border-bottom:1px solid var(--rule);}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:18px 0;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--text);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;}
+.faq-icon{font-size:20px;color:var(--teal-mid);flex-shrink:0;transition:transform .3s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;}
+.faq-item.open .faq-a{max-height:300px;}
+.faq-a-inner{padding:0 0 18px;font-size:14px;color:var(--mid);line-height:1.85;}
+
+.form-card{background:var(--white);border:1px solid var(--rule);border-radius:10px;padding:36px;}
+.form-title{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:6px;}
+.form-sub{font-size:14px;color:var(--mid);margin-bottom:24px;}
+.form-group{margin-bottom:14px;}
+.form-label{font-size:12px;font-weight:700;margin-bottom:5px;display:flex;align-items:center;gap:5px;}
+.form-req{font-size:10px;color:var(--white);background:#dc2626;padding:1px 5px;border-radius:2px;}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 13px;border:1px solid var(--rule);border-radius:5px;font-size:14px;font-family:var(--sans);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--teal);}
+.form-textarea{min-height:90px;resize:vertical;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-privacy{font-size:11px;color:var(--mid);line-height:1.65;margin-bottom:16px;padding:11px 14px;background:var(--paper);border-radius:5px;border:1px solid var(--rule);}
+.btn-submit{width:100%;background:var(--teal);color:var(--white);padding:13px;border-radius:5px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:background .2s;}
+.btn-submit:hover{background:var(--teal-mid);}
+
+footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:24px 48px;font-size:12px;}
+.footer-inner{max-width:960px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+.footer-links{display:flex;gap:20px;}
+.footer-links a{color:rgba(255,255,255,0.3);text-decoration:none;}
+@media(max-width:768px){nav{padding:0 20px;}.hero{padding:48px 20px 40px;}.hero-plans{grid-template-columns:1fr;}.main{padding:40px 20px;}.merit-grid{grid-template-columns:1fr;}.cp-grid{grid-template-columns:1fr;}.form-row{grid-template-columns:1fr;}.footer-inner{flex-direction:column;gap:10px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Local<strong>Navi</strong><small>歯科・クリニック</small></a>
+  <div class="nav-center">
+    <a href="index.html">歯科を探す</a>
+    <a href="listing.html" class="active">掲載について</a>
+  </div>
+  <a href="#form" class="nav-cta">掲載を申し込む</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <span class="h-kicker">For Dental Clinics</span>
+    <h1 class="h1">歯科・クリニックの皆様へ。<br>掲載は無料です。</h1>
+    <p class="h-lead">Local Naviへの掲載費用は一切かかりません。Webサイトがない場合でも掲載できます。患者様からのお問い合わせはすべて当サイトが仲介します。</p>
+    <div class="hero-plans">
+      <div class="hplan">
+        <div class="hplan-label">無料掲載プラン</div>
+        <div class="hplan-price">0円</div>
+        <div class="hplan-note">永続無料 / 掲載ページ作成込み</div>
+      </div>
+      <div class="hplan featured">
+        <div class="hplan-label">コンテンツ作成支援</div>
+        <div class="hplan-price">30,000円〜</div>
+        <div class="hplan-note">月額 / 30日間無料トライアルあり</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="section">
+    <span class="sec-eye">Benefits</span>
+    <h2 class="sec-h2">掲載することで<br>何が変わるか</h2>
+    <p class="sec-lead">掲載情報が充実しているほど、患者様からの問い合わせが増えます。</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="mc-title"><span class="mc-dot"></span>全国からの患者様にリーチ</div>
+        <div class="mc-body">Local Naviは全国52,985件の歯科・クリニックを掲載。エリアで検索する患者様に自然に見つけてもらえます。</div>
+      </div>
+      <div class="merit-card">
+        <div class="mc-title"><span class="mc-dot"></span>問い合わせを仲介</div>
+        <div class="mc-body">患者様からの予約リクエスト・相談は当サイト（Mimosa Works）が受け取り、クリニックに転送します。メールアドレスの公開不要です。</div>
+      </div>
+      <div class="merit-card">
+        <div class="mc-title"><span class="mc-dot"></span>Webサイトがなくても掲載可</div>
+        <div class="mc-body">院名・住所・電話番号・診療科目をお送りいただければ掲載ページを作成します。情報は後から追加できます。</div>
+      </div>
+      <div class="merit-card">
+        <div class="mc-title"><span class="mc-dot"></span>土日診療・公式サイトで差別化</div>
+        <div class="mc-body">土日診療の有無・公式サイトのURLを登録すると、絞り込み検索で上位に表示されやすくなります。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-eye">How to list</span>
+    <h2 class="sec-h2">掲載までの流れ</h2>
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-num">1</div>
+        <div class="flow-content">
+          <div class="flow-title">フォームから申し込む</div>
+          <div class="flow-body">このページ下部のフォームから、院名・エリア・診療科目・担当者名・連絡先をご送信ください。</div>
+          <div class="flow-note">所要時間：約5分</div>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">2</div>
+        <div class="flow-content">
+          <div class="flow-title">当サイトが掲載ページを作成</div>
+          <div class="flow-body">送信内容をもとに掲載ページを作成します。厚生労働省の医療機関情報をもとに基本情報は既に掲載されている場合があります。</div>
+          <div class="flow-note">対応期間：申込から3営業日以内</div>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">3</div>
+        <div class="flow-content">
+          <div class="flow-title">掲載内容を確認・公開</div>
+          <div class="flow-body">作成した掲載ページをメールでお送りします。確認後、修正があればお知らせください。</div>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">4</div>
+        <div class="flow-content">
+          <div class="flow-title">患者様からの問い合わせが届く</div>
+          <div class="flow-body">予約リクエスト・相談が当サイト経由で届き始めます。内容を確認の上、患者様に直接ご連絡ください。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-eye">Content Support</span>
+    <h2 class="sec-h2">コンテンツが不足している場合</h2>
+    <p class="sec-lead">ブログ・SNS投稿・患者様向けコラムが充実しているほど、新患獲得につながります。</p>
+    <div class="content-plan">
+      <div class="cp-head">
+        <div>
+          <div class="cp-title">AIコンテンツ自動生成サービス</div>
+          <div class="cp-sub">by Mimosa Works / 30日間無料トライアルあり</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="cp-price-num">30,000円〜</div>
+          <div class="cp-price-note">/ 月（税別）</div>
+        </div>
+      </div>
+      <div class="cp-grid">
+        <div class="cp-item"><div class="cp-item-label">月次生成量</div><div class="cp-item-val">20</div><div class="cp-item-unit">本のブログ・コラム</div></div>
+        <div class="cp-item"><div class="cp-item-label">SNS投稿</div><div class="cp-item-val">60</div><div class="cp-item-unit">件（Instagram・X等）</div></div>
+        <div class="cp-item"><div class="cp-item-label">必要な作業</div><div class="cp-item-val">30</div><div class="cp-item-unit">分/月のインタビュー</div></div>
+      </div>
+      <div class="cp-merits">
+        <div class="cp-merit">月1回30分のインタビューに答えるだけ。あとはAIが全量生成・投稿します</div>
+        <div class="cp-merit">歯科治療の豆知識・症例紹介・予防歯科コラムなど、患者様に役立つコンテンツを自動作成</div>
+        <div class="cp-merit">SEO最適化済み。地域名+診療科目での検索流入が増えます</div>
+        <div class="cp-merit">掲載情報も自動更新します</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <span class="sec-eye">FAQ</span>
+    <h2 class="sec-h2">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">既に掲載されていますが、情報を修正したい<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">厚生労働省の医療機関情報をもとに基本情報を掲載している場合があります。修正・削除・情報追加はhello@mimosaworks.comにご連絡ください。3営業日以内に対応します。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Webサイトがない場合でも掲載できますか？<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">はい、掲載できます。院名・エリア・電話番号・診療科目をお送りいただければ掲載ページを作成します。Webサイトは後から追加することも可能です。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">患者様からの問い合わせはどのように届きますか？<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">患者様からの予約リクエスト・相談は、当サイト運営（Mimosa Works）のメールに届いた後、クリニックにご登録のメールアドレスへ転送します。患者様の氏名・連絡先・受診内容が含まれます。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">掲載費用はかかりますか？<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">掲載は完全無料です。有料オプションとしてコンテンツ作成支援サービス（月額3万円〜）をご用意していますが、無料掲載のみのご利用も可能です。</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">コンテンツ作成支援の無料トライアルはどう始めますか？<span class="faq-icon">+</span></button>
+        <div class="faq-a"><div class="faq-a-inner">下部のフォームから「コンテンツ作成支援も相談したい」を選択してご送信ください。2営業日以内にご案内します。クレジットカード登録は不要です。</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="form">
+    <span class="sec-eye">Contact</span>
+    <h2 class="sec-h2">掲載・コンテンツ作成を<br>相談する</h2>
+    <div class="form-card">
+      <div class="form-title">お問い合わせフォーム</div>
+      <div class="form-sub">2営業日以内にご返信します。</div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">医院名 <span class="form-req">必須</span></label><input class="form-input" type="text" placeholder="〇〇歯科医院"></div>
+        <div class="form-group"><label class="form-label">担当者名</label><input class="form-input" type="text" placeholder="山田 太郎"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email" placeholder="info@example.com"></div>
+        <div class="form-group"><label class="form-label">電話番号</label><input class="form-input" type="tel" placeholder="045-000-0000"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">所在地（都道府県・市区町村）</label><input class="form-input" type="text" placeholder="神奈川県横浜市港北区"></div>
+        <div class="form-group"><label class="form-label">主な診療科目</label><select class="form-select"><option>一般歯科</option><option>矯正歯科</option><option>小児歯科</option><option>口腔外科</option><option>複数科目</option></select></div>
+      </div>
+      <div class="form-group"><label class="form-label">ご相談の内容</label>
+        <select class="form-select" style="margin-bottom:0;">
+          <option>掲載のみ希望</option>
+          <option>掲載 + コンテンツ作成支援も相談したい</option>
+          <option>掲載情報の修正・削除をしたい</option>
+          <option>コンテンツ作成支援のみ相談したい</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">公式Webサイト URL（あれば）</label><input class="form-input" type="url" placeholder="https://example.com"></div>
+      <div class="form-group"><label class="form-label">補足・ご質問（任意）</label><textarea class="form-textarea" placeholder="例：Webサイトはあるが患者向けコンテンツが少ない。SNS運用も検討している。"></textarea></div>
+      <div class="form-privacy">送信内容はMimosa Works（hello@mimosaworks.com）に届きます。2営業日以内にご返信します。個人情報は第三者に提供しません。</div>
+      <button class="btn-submit">送信する</button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>Local Navi 歯科・クリニック / 運営：Mimosa Works / hello@mimosaworks.com</div>
+    <div class="footer-links">
+      <a href="#">プライバシーポリシー</a>
+      <a href="#">利用規約</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) { btn.closest('.faq-item').classList.toggle('open'); }
+</script>
+</body>
+</html>
