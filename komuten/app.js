@@ -70,21 +70,8 @@ function resetFilters() {
   render();
 }
 
-function openModal(name, sub) {
-  document.getElementById('modal-name').textContent = name;
-  document.getElementById('modal-sub').textContent = sub;
-  document.getElementById('modal').classList.add('open');
-}
-function closeModal() { document.getElementById('modal').classList.remove('open'); }
+// openModal / closeModal / switchTab は index.html 内で定義
 document.getElementById('modal').addEventListener('click', e => { if(e.target===document.getElementById('modal')) closeModal(); });
-
-function switchTab(btn, tabId) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  ['t-consult','t-doc','t-estimate'].forEach(id => {
-    document.getElementById(id).style.display = id===tabId ? 'block' : 'none';
-  });
-}
 
 function cardHTML(c) {
   const badges = (c.types||['建設工事']).map(t => '<span class="bdg">'+t+'</span>').join('');
