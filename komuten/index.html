@@ -121,45 +121,59 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
     <div class="modal-body">
       <div class="mediation-note"><div class="mn-head">当サイトが仲介します</div><div class="mn-body">送信内容はLocal Navi（運営：Mimosa Works）が受け取り、工務店へ取り次ぎます。</div></div>
       <div class="modal-company"><div class="mc-name" id="modal-name"></div><div class="mc-sub" id="modal-sub"></div></div>
-      <div class="tab-row">
-        <button class="tab-btn active" onclick="switchTab(this,'t-consult')">無料相談を予約</button>
-        <button class="tab-btn" onclick="switchTab(this,'t-doc')">資料を請求する</button>
-        <button class="tab-btn" onclick="switchTab(this,'t-estimate')">見積もりを依頼</button>
+
+      <!-- 送信完了メッセージ -->
+      <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-size:40px;margin-bottom:16px;">✅</div>
+        <div style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:8px;">送信しました！</div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.8;">内容を受け付けました。<br>2営業日以内に工務店からご連絡が届きます。</div>
+        <button onclick="closeModal()" style="margin-top:24px;background:var(--navy);color:var(--white);border:none;padding:10px 32px;border-radius:5px;font-size:14px;font-weight:700;cursor:pointer;">閉じる</button>
       </div>
-      <div id="t-consult">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text" placeholder="山田 太郎"></div>
-          <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" type="tel" placeholder="090-0000-0000"></div>
+
+      <div id="form-tabs-wrapper">
+        <div class="tab-row">
+          <button class="tab-btn active" onclick="switchTab(this,'t-consult')">無料相談を予約</button>
+          <button class="tab-btn" onclick="switchTab(this,'t-doc')">資料を請求する</button>
+          <button class="tab-btn" onclick="switchTab(this,'t-estimate')">見積もりを依頼</button>
         </div>
-        <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email" placeholder="example@email.com"></div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">相談方法</label><select class="form-select"><option>電話で相談</option><option>メールで相談</option><option>Zoomで相談</option><option>ショールーム訪問</option></select></div>
-          <div class="form-group"><label class="form-label">ご検討の時期</label><select class="form-select"><option>できるだけ早く</option><option>1ヶ月以内</option><option>3ヶ月以内</option><option>半年以内</option><option>まだ未定</option></select></div>
+        <div id="t-consult">
+          <input type="hidden" id="consult-company" name="工務店名">
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" id="consult-name" type="text" placeholder="山田 太郎" required></div>
+            <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" id="consult-tel" type="tel" placeholder="090-0000-0000" required></div>
+          </div>
+          <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" id="consult-email" type="email" placeholder="example@email.com" required></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">相談方法</label><select class="form-select" id="consult-method"><option>電話で相談</option><option>メールで相談</option><option>Zoomで相談</option><option>ショールーム訪問</option></select></div>
+            <div class="form-group"><label class="form-label">ご検討の時期</label><select class="form-select" id="consult-timing"><option>できるだけ早く</option><option>1ヶ月以内</option><option>3ヶ月以内</option><option>半年以内</option><option>まだ未定</option></select></div>
+          </div>
+          <div class="form-group"><label class="form-label">ご相談内容（任意）</label><textarea class="form-textarea" id="consult-message" placeholder="工事の種類・エリア・ご要望などをご記入ください"></textarea></div>
+          <div class="form-note">送信後、当サイト運営より工務店に取り次ぎます。2営業日以内に工務店からご連絡があります。</div>
+          <button class="btn-submit" id="btn-consult" onclick="submitForm('consult')">無料相談を予約する</button>
         </div>
-        <div class="form-group"><label class="form-label">ご相談内容（任意）</label><textarea class="form-textarea" placeholder="工事の種類・エリア・ご要望などをご記入ください"></textarea></div>
-        <div class="form-note">送信後、当サイト運営より工務店に取り次ぎます。2営業日以内に工務店からご連絡があります。</div>
-        <button class="btn-submit">無料相談を予約する</button>
-      </div>
-      <div id="t-doc" style="display:none">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text"></div>
-          <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email"></div>
+        <div id="t-doc" style="display:none">
+          <input type="hidden" id="doc-company" name="工務店名">
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" id="doc-name" type="text" required></div>
+            <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" id="doc-email" type="email" required></div>
+          </div>
+          <div class="form-note">当サイト運営が工務店に資料送付を依頼します。</div>
+          <button class="btn-submit" id="btn-doc" onclick="submitForm('doc')">資料を請求する</button>
         </div>
-        <div class="form-note">当サイト運営が工務店に資料送付を依頼します。</div>
-        <button class="btn-submit">資料を請求する</button>
-      </div>
-      <div id="t-estimate" style="display:none">
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text"></div>
-          <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" type="tel"></div>
+        <div id="t-estimate" style="display:none">
+          <input type="hidden" id="est-company" name="工務店名">
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" id="est-name" type="text" required></div>
+            <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" id="est-tel" type="tel" required></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">工事の種類</label><select class="form-select" id="est-type"><option>注文住宅・新築</option><option>リフォーム・増改築</option><option>外壁塗装・屋根</option><option>水回りリフォーム</option><option>耐震リフォーム</option></select></div>
+            <div class="form-group"><label class="form-label">予算（目安）</label><select class="form-select" id="est-budget"><option>2,000万円未満</option><option>2,000〜3,000万円</option><option>3,000〜4,000万円</option><option>4,000万円以上</option></select></div>
+          </div>
+          <div class="form-group"><label class="form-label">ご要望（任意）</label><textarea class="form-textarea" id="est-message" placeholder="工事内容・こだわり・エリアなどをご記入ください"></textarea></div>
+          <div class="form-note">当サイト運営が工務店に見積もり依頼を転送します。</div>
+          <button class="btn-submit" id="btn-estimate" onclick="submitForm('estimate')">見積もりを依頼する</button>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">工事の種類</label><select class="form-select"><option>注文住宅・新築</option><option>リフォーム・増改築</option><option>外壁塗装・屋根</option><option>水回りリフォーム</option><option>耐震リフォーム</option></select></div>
-          <div class="form-group"><label class="form-label">予算（目安）</label><select class="form-select"><option>2,000万円未満</option><option>2,000〜3,000万円</option><option>3,000〜4,000万円</option><option>4,000万円以上</option></select></div>
-        </div>
-        <div class="form-group"><label class="form-label">ご要望（任意）</label><textarea class="form-textarea" placeholder="工事内容・こだわり・エリアなどをご記入ください"></textarea></div>
-        <div class="form-note">当サイト運営が工務店に見積もり依頼を転送します。</div>
-        <button class="btn-submit">見積もりを依頼する</button>
       </div>
     </div>
   </div>
@@ -256,6 +270,112 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
   </div>
 </footer>
 
+<script>
+// ===== Formspree 送信 =====
+const FORMSPREE_URL = 'https://formspree.io/f/xaqzaqvk';
+let _currentCompany = '';
+
+function openModal(name, sub) {
+  _currentCompany = name;
+  document.getElementById('modal-name').textContent = name;
+  document.getElementById('modal-sub').textContent = sub || '';
+  // 会社名を全フォームの hidden に設定
+  ['consult-company','doc-company','est-company'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = name;
+  });
+  // 成功メッセージ非表示・フォームを戻す
+  document.getElementById('form-success').style.display = 'none';
+  document.getElementById('form-tabs-wrapper').style.display = '';
+  document.getElementById('modal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+}
+
+function switchTab(btn, tabId) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['t-consult','t-doc','t-estimate'].forEach(id => {
+    document.getElementById(id).style.display = id === tabId ? '' : 'none';
+  });
+}
+
+async function submitForm(type) {
+  const ENDPOINT = FORMSPREE_URL;
+  let data = {};
+  let btnId = '';
+
+  if (type === 'consult') {
+    const name = document.getElementById('consult-name').value.trim();
+    const tel  = document.getElementById('consult-tel').value.trim();
+    const email = document.getElementById('consult-email').value.trim();
+    if (!name || !tel || !email) { alert('お名前・電話番号・メールアドレスは必須です。'); return; }
+    data = {
+      問い合わせ種別: '無料相談予約',
+      工務店名: _currentCompany,
+      お名前: name,
+      電話番号: tel,
+      メールアドレス: email,
+      相談方法: document.getElementById('consult-method').value,
+      検討時期: document.getElementById('consult-timing').value,
+      相談内容: document.getElementById('consult-message').value
+    };
+    btnId = 'btn-consult';
+  } else if (type === 'doc') {
+    const name  = document.getElementById('doc-name').value.trim();
+    const email = document.getElementById('doc-email').value.trim();
+    if (!name || !email) { alert('お名前・メールアドレスは必須です。'); return; }
+    data = {
+      問い合わせ種別: '資料請求',
+      工務店名: _currentCompany,
+      お名前: name,
+      メールアドレス: email
+    };
+    btnId = 'btn-doc';
+  } else if (type === 'estimate') {
+    const name = document.getElementById('est-name').value.trim();
+    const tel  = document.getElementById('est-tel').value.trim();
+    if (!name || !tel) { alert('お名前・電話番号は必須です。'); return; }
+    data = {
+      問い合わせ種別: '見積もり依頼',
+      工務店名: _currentCompany,
+      お名前: name,
+      電話番号: tel,
+      工事の種類: document.getElementById('est-type').value,
+      予算: document.getElementById('est-budget').value,
+      要望: document.getElementById('est-message').value
+    };
+    btnId = 'btn-estimate';
+  }
+
+  const btn = document.getElementById(btnId);
+  const origText = btn.textContent;
+  btn.textContent = '送信中...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('form-tabs-wrapper').style.display = 'none';
+      document.getElementById('form-success').style.display = '';
+    } else {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.textContent = origText;
+      btn.disabled = false;
+    }
+  } catch (e) {
+    alert('通信エラーが発生しました。インターネット接続をご確認ください。');
+    btn.textContent = origText;
+    btn.disabled = false;
+  }
+}
+</script>
 <script src="app.js"></script>
 </body>
 </html>
