@@ -141,54 +141,40 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:24px 48px;font-siz
     <div class="modal-body">
       <div class="mediation-note"><div class="mn-head">当サイトが仲介します</div><div class="mn-body">送信内容はLocal Navi（運営：Mimosa Works）が受け取り、クリニックへ取り次ぎます。</div></div>
       <div class="modal-company"><div class="mc-name" id="modal-name"></div><div class="mc-sub" id="modal-sub"></div></div>
-
-      <!-- 送信完了メッセージ -->
-      <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
-        <div style="font-size:40px;margin-bottom:16px;">✅</div>
-        <div style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:8px;">送信しました！</div>
-        <div style="font-size:14px;color:var(--mid);line-height:1.8;">内容を受け付けました。<br>2営業日以内にクリニックからご連絡が届きます。</div>
-        <button onclick="closeModal()" style="margin-top:24px;background:var(--teal);color:var(--white);border:none;padding:10px 32px;border-radius:5px;font-size:14px;font-weight:700;cursor:pointer;">閉じる</button>
+      <div class="tab-row">
+        <button class="tab-btn active" onclick="switchTab(this,'t-reserve')">診療予約</button>
+        <button class="tab-btn" onclick="switchTab(this,'t-consult')">相談する</button>
+        <button class="tab-btn" onclick="switchTab(this,'t-doc')">資料請求</button>
       </div>
-
-      <div id="form-tabs-wrapper">
-        <div class="tab-row">
-          <button class="tab-btn active" onclick="switchTab(this,'t-reserve')">診療予約</button>
-          <button class="tab-btn" onclick="switchTab(this,'t-consult')">相談する</button>
-          <button class="tab-btn" onclick="switchTab(this,'t-doc')">資料請求</button>
+      <div id="t-reserve">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text" placeholder="山田 太郎"></div>
+          <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" type="tel" placeholder="090-0000-0000"></div>
         </div>
-        <div id="t-reserve">
-          <input type="hidden" id="reserve-clinic">
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" id="reserve-name" type="text" placeholder="山田 太郎" required></div>
-            <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" id="reserve-tel" type="tel" placeholder="090-0000-0000" required></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">ご希望日</label><input class="form-input" id="reserve-date" type="date"></div>
-            <div class="form-group"><label class="form-label">時間帯</label><select class="form-select" id="reserve-time"><option>午前（9〜12時）</option><option>午後（13〜17時）</option><option>夕方（17〜19時）</option><option>指定なし</option></select></div>
-          </div>
-          <div class="form-group"><label class="form-label">受診内容</label><select class="form-select" id="reserve-type"><option>定期検診・クリーニング</option><option>虫歯の治療</option><option>歯周病の治療</option><option>痛みがある</option><option>矯正相談</option><option>インプラント相談</option><option>その他</option></select></div>
-          <div class="form-note">当サイト運営がクリニックへ予約リクエストを送信します。クリニックより折り返しご連絡があります。</div>
-          <button class="btn-submit" id="btn-reserve" onclick="submitForm('reserve')">予約リクエストを送る</button>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">ご希望日</label><input class="form-input" type="date"></div>
+          <div class="form-group"><label class="form-label">時間帯</label><select class="form-select"><option>午前（9〜12時）</option><option>午後（13〜17時）</option><option>夕方（17〜19時）</option><option>指定なし</option></select></div>
         </div>
-        <div id="t-consult" style="display:none">
-          <input type="hidden" id="consult-clinic">
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" id="consult-name" type="text" required></div>
-            <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" id="consult-tel" type="tel" required></div>
-          </div>
-          <div class="form-group"><label class="form-label">ご相談内容</label><textarea class="form-textarea" id="consult-message" placeholder="気になる症状・ご要望などをご記入ください"></textarea></div>
-          <div class="form-note">当サイト運営がクリニックへ取り次ぎます。</div>
-          <button class="btn-submit" id="btn-consult" onclick="submitForm('consult')">相談を申し込む</button>
+        <div class="form-group"><label class="form-label">受診内容</label><select class="form-select"><option>定期検診・クリーニング</option><option>虫歯の治療</option><option>歯周病の治療</option><option>痛みがある</option><option>矯正相談</option><option>インプラント相談</option><option>その他</option></select></div>
+        <div class="form-note">当サイト運営がクリニックへ予約リクエストを送信します。クリニックより折り返しご連絡があります。</div>
+        <button class="btn-submit">予約リクエストを送る</button>
+      </div>
+      <div id="t-consult" style="display:none">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text"></div>
+          <div class="form-group"><label class="form-label">電話番号 <span class="form-req">必須</span></label><input class="form-input" type="tel"></div>
         </div>
-        <div id="t-doc" style="display:none">
-          <input type="hidden" id="doc-clinic">
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" id="doc-name" type="text" required></div>
-            <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" id="doc-email" type="email" required></div>
-          </div>
-          <div class="form-note">料金表・診療案内などをお送りします。</div>
-          <button class="btn-submit" id="btn-doc" onclick="submitForm('doc')">資料を請求する</button>
+        <div class="form-group"><label class="form-label">ご相談内容</label><textarea class="form-textarea" placeholder="気になる症状・ご要望などをご記入ください"></textarea></div>
+        <div class="form-note">当サイト運営がクリニックへ取り次ぎます。</div>
+        <button class="btn-submit">相談を申し込む</button>
+      </div>
+      <div id="t-doc" style="display:none">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">お名前 <span class="form-req">必須</span></label><input class="form-input" type="text"></div>
+          <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email"></div>
         </div>
+        <div class="form-note">料金表・診療案内などをお送りします。</div>
+        <button class="btn-submit">資料を請求する</button>
       </div>
     </div>
   </div>
@@ -269,7 +255,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:24px 48px;font-siz
 
 <footer>
   <div class="footer-inner">
-    <div>Local Navi 歯科・クリニック / 運営：Mimosa Works / hello@mimosaworks.com</div>
+    <div>Local Navi 歯科・クリニック / 運営：Mimosa Works / info@localnavi.net</div>
     <div class="footer-links">
       <a href="listing.html">掲載について</a>
       <a href="#">プライバシーポリシー</a>
@@ -367,19 +353,9 @@ function resetFilters() {
   render();
 }
 
-const FORMSPREE_URL = 'https://formspree.io/f/xaqzaqvk';
-let _currentClinic = '';
-
 function openModal(name, sub) {
-  _currentClinic = name;
   document.getElementById('modal-name').textContent = name;
-  document.getElementById('modal-sub').textContent = sub || '';
-  ['reserve-clinic','consult-clinic','doc-clinic'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = name;
-  });
-  document.getElementById('form-success').style.display = 'none';
-  document.getElementById('form-tabs-wrapper').style.display = '';
+  document.getElementById('modal-sub').textContent = sub;
   document.getElementById('modal').classList.add('open');
 }
 function closeModal() { document.getElementById('modal').classList.remove('open'); }
@@ -390,75 +366,6 @@ function switchTab(btn, tabId) {
   ['t-reserve','t-consult','t-doc'].forEach(id => {
     document.getElementById(id).style.display = id===tabId ? 'block' : 'none';
   });
-}
-
-async function submitForm(type) {
-  let data = {};
-  let btnId = '';
-
-  if (type === 'reserve') {
-    const name = document.getElementById('reserve-name').value.trim();
-    const tel  = document.getElementById('reserve-tel').value.trim();
-    if (!name || !tel) { alert('お名前・電話番号は必須です。'); return; }
-    data = {
-      問い合わせ種別: '診療予約リクエスト',
-      クリニック名: _currentClinic,
-      お名前: name,
-      電話番号: tel,
-      ご希望日: document.getElementById('reserve-date').value || '指定なし',
-      時間帯: document.getElementById('reserve-time').value,
-      受診内容: document.getElementById('reserve-type').value
-    };
-    btnId = 'btn-reserve';
-  } else if (type === 'consult') {
-    const name = document.getElementById('consult-name').value.trim();
-    const tel  = document.getElementById('consult-tel').value.trim();
-    if (!name || !tel) { alert('お名前・電話番号は必須です。'); return; }
-    data = {
-      問い合わせ種別: '歯科相談',
-      クリニック名: _currentClinic,
-      お名前: name,
-      電話番号: tel,
-      相談内容: document.getElementById('consult-message').value
-    };
-    btnId = 'btn-consult';
-  } else if (type === 'doc') {
-    const name  = document.getElementById('doc-name').value.trim();
-    const email = document.getElementById('doc-email').value.trim();
-    if (!name || !email) { alert('お名前・メールアドレスは必須です。'); return; }
-    data = {
-      問い合わせ種別: '資料請求',
-      クリニック名: _currentClinic,
-      お名前: name,
-      メールアドレス: email
-    };
-    btnId = 'btn-doc';
-  }
-
-  const btn = document.getElementById(btnId);
-  const origText = btn.textContent;
-  btn.textContent = '送信中...';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(FORMSPREE_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(data)
-    });
-    if (res.ok) {
-      document.getElementById('form-tabs-wrapper').style.display = 'none';
-      document.getElementById('form-success').style.display = '';
-    } else {
-      alert('送信に失敗しました。時間をおいて再度お試しください。');
-      btn.textContent = origText;
-      btn.disabled = false;
-    }
-  } catch (e) {
-    alert('通信エラーが発生しました。インターネット接続をご確認ください。');
-    btn.textContent = origText;
-    btn.disabled = false;
-  }
 }
 
 function cardHTML(c) {
