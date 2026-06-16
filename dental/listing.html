@@ -260,30 +260,39 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:24px 48px;font-siz
     <div class="form-card">
       <div class="form-title">お問い合わせフォーム</div>
       <div class="form-sub">2営業日以内にご返信します。</div>
+      <!-- 送信完了メッセージ -->
+      <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-size:48px;margin-bottom:16px;">✅</div>
+        <div style="font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;">送信しました！</div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.8;">お問い合わせありがとうございます。<br>2営業日以内に info@localnavi.net よりご連絡します。</div>
+      </div>
+
+      <div id="form-body">
       <div class="form-row">
-        <div class="form-group"><label class="form-label">医院名 <span class="form-req">必須</span></label><input class="form-input" type="text" placeholder="〇〇歯科医院"></div>
-        <div class="form-group"><label class="form-label">担当者名</label><input class="form-input" type="text" placeholder="山田 太郎"></div>
+        <div class="form-group"><label class="form-label">医院名 <span class="form-req">必須</span></label><input class="form-input" id="f-clinic" type="text" placeholder="〇〇歯科医院"></div>
+        <div class="form-group"><label class="form-label">担当者名</label><input class="form-input" id="f-name" type="text" placeholder="山田 太郎"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" type="email" placeholder="info@example.com"></div>
-        <div class="form-group"><label class="form-label">電話番号</label><input class="form-input" type="tel" placeholder="045-000-0000"></div>
+        <div class="form-group"><label class="form-label">メールアドレス <span class="form-req">必須</span></label><input class="form-input" id="f-email" type="email" placeholder="info@example.com"></div>
+        <div class="form-group"><label class="form-label">電話番号</label><input class="form-input" id="f-tel" type="tel" placeholder="045-000-0000"></div>
       </div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">所在地（都道府県・市区町村）</label><input class="form-input" type="text" placeholder="神奈川県横浜市港北区"></div>
-        <div class="form-group"><label class="form-label">主な診療科目</label><select class="form-select"><option>一般歯科</option><option>矯正歯科</option><option>小児歯科</option><option>口腔外科</option><option>複数科目</option></select></div>
+        <div class="form-group"><label class="form-label">所在地（都道府県・市区町村）</label><input class="form-input" id="f-area" type="text" placeholder="神奈川県横浜市港北区"></div>
+        <div class="form-group"><label class="form-label">主な診療科目</label><select class="form-select" id="f-type"><option>一般歯科</option><option>矯正歯科</option><option>小児歯科</option><option>口腔外科</option><option>複数科目</option></select></div>
       </div>
       <div class="form-group"><label class="form-label">ご相談の内容</label>
-        <select class="form-select" style="margin-bottom:0;">
+        <select class="form-select" id="f-purpose" style="margin-bottom:0;">
           <option>掲載のみ希望</option>
           <option>掲載 + コンテンツ作成支援も相談したい</option>
           <option>掲載情報の修正・削除をしたい</option>
           <option>コンテンツ作成支援のみ相談したい</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">公式Webサイト URL（あれば）</label><input class="form-input" type="url" placeholder="https://example.com"></div>
-      <div class="form-group"><label class="form-label">補足・ご質問（任意）</label><textarea class="form-textarea" placeholder="例：Webサイトはあるが患者向けコンテンツが少ない。SNS運用も検討している。"></textarea></div>
+      <div class="form-group"><label class="form-label">公式Webサイト URL（あれば）</label><input class="form-input" id="f-url" type="url" placeholder="https://example.com"></div>
+      <div class="form-group"><label class="form-label">補足・ご質問（任意）</label><textarea class="form-textarea" id="f-note" placeholder="例：Webサイトはあるが患者向けコンテンツが少ない。SNS運用も検討している。"></textarea></div>
       <div class="form-privacy">送信内容はMimosa Works（info@localnavi.net）に届きます。2営業日以内にご返信します。個人情報は第三者に提供しません。</div>
-      <button class="btn-submit">送信する</button>
+      <button class="btn-submit" id="btn-submit" onclick="submitListing()">送信する</button>
+      </div>
     </div>
   </div>
 
@@ -301,6 +310,49 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:24px 48px;font-siz
 
 <script>
 function toggleFaq(btn) { btn.closest('.faq-item').classList.toggle('open'); }
+
+async function submitListing() {
+  const clinic = document.getElementById('f-clinic').value.trim();
+  const email  = document.getElementById('f-email').value.trim();
+  if (!clinic || !email) { alert('医院名・メールアドレスは必須です。'); return; }
+
+  const data = {
+    種別: '掲載申し込み（歯科・クリニック）',
+    医院名: clinic,
+    担当者名: document.getElementById('f-name').value.trim(),
+    メールアドレス: email,
+    電話番号: document.getElementById('f-tel').value.trim(),
+    所在地: document.getElementById('f-area').value.trim(),
+    診療科目: document.getElementById('f-type').value,
+    相談内容: document.getElementById('f-purpose').value,
+    WebサイトURL: document.getElementById('f-url').value.trim(),
+    補足: document.getElementById('f-note').value.trim()
+  };
+
+  const btn = document.getElementById('btn-submit');
+  btn.textContent = '送信中...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xaqzaqvk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('form-body').style.display = 'none';
+      document.getElementById('form-success').style.display = '';
+    } else {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.textContent = '送信する';
+      btn.disabled = false;
+    }
+  } catch (e) {
+    alert('通信エラーが発生しました。インターネット接続をご確認ください。');
+    btn.textContent = '送信する';
+    btn.disabled = false;
+  }
+}
 </script>
 </body>
 </html>
