@@ -166,7 +166,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
           </div>
           <div class="mc-title">月間3万人が閲覧</div>
         </div>
-        <div class="mc-body">神奈川県内で工務店を探している施主が毎月3万人以上訪問しています。エリア・工事種別で絞り込んだ検索結果に表示されます。</div>
+        <div class="mc-body">神奈川県内で工務店を探している施主に向けて情報を発信しています。エリア・工事種別で絞り込んだ検索結果に表示されます。</div>
       </div>
       <div class="merit-card">
         <div class="mc-head">
@@ -315,30 +315,38 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
         <div class="form-title">お問い合わせフォーム</div>
         <div class="form-sub">2営業日以内にご返信します。まずはお気軽にご送信ください。</div>
       </div>
+      <!-- 送信完了メッセージ -->
+      <div id="form-success" style="display:none;text-align:center;padding:40px 20px;">
+        <div style="font-size:48px;margin-bottom:16px;">✅</div>
+        <div style="font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:10px;">送信しました！</div>
+        <div style="font-size:14px;color:var(--mid);line-height:1.8;">お問い合わせありがとうございます。<br>2営業日以内に info@localnavi.net よりご連絡します。</div>
+      </div>
+
+      <div id="form-body">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">会社名 <span class="form-req">必須</span></label>
-          <input class="form-input" type="text" placeholder="〇〇工務店">
+          <input class="form-input" id="f-company" type="text" placeholder="〇〇工務店">
         </div>
         <div class="form-group">
           <label class="form-label">担当者名</label>
-          <input class="form-input" type="text" placeholder="山田 太郎">
+          <input class="form-input" id="f-name" type="text" placeholder="山田 太郎">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">メールアドレス <span class="form-req">必須</span></label>
-          <input class="form-input" type="email" placeholder="info@example.com">
+          <input class="form-input" id="f-email" type="email" placeholder="info@example.com">
         </div>
         <div class="form-group">
           <label class="form-label">電話番号</label>
-          <input class="form-input" type="tel" placeholder="045-000-0000">
+          <input class="form-input" id="f-tel" type="tel" placeholder="045-000-0000">
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">主な対応エリア</label>
-          <select class="form-select">
+          <select class="form-select" id="f-area">
             <option>横浜市 全域</option>
             <option>横浜市 港北区・都筑区</option>
             <option>横浜市 青葉区・緑区</option>
@@ -352,7 +360,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
         </div>
         <div class="form-group">
           <label class="form-label">得意な工事の種類</label>
-          <select class="form-select">
+          <select class="form-select" id="f-type">
             <option>注文住宅・新築</option>
             <option>リフォーム・増改築</option>
             <option>外壁塗装・屋根</option>
@@ -364,7 +372,7 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
       </div>
       <div class="form-group">
         <label class="form-label">ご相談の内容</label>
-        <select class="form-select" style="margin-bottom:0;">
+        <select class="form-select" id="f-purpose" style="margin-bottom:0;">
           <option>掲載のみ希望</option>
           <option>掲載 + コンテンツ作成支援も相談したい</option>
           <option>コンテンツ作成支援のみ相談したい</option>
@@ -373,14 +381,15 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
       </div>
       <div class="form-group">
         <label class="form-label">Webサイト URL（あれば）</label>
-        <input class="form-input" type="url" placeholder="https://example.com">
+        <input class="form-input" id="f-url" type="url" placeholder="https://example.com">
       </div>
       <div class="form-group">
         <label class="form-label">補足・ご質問（任意）</label>
-        <textarea class="form-textarea" placeholder="例：Webサイトはあるが施工事例が少ない。SNS運用も検討している。坪単価は55〜70万円程度。"></textarea>
+        <textarea class="form-textarea" id="f-note" placeholder="例：Webサイトはあるが施工事例が少ない。SNS運用も検討している。坪単価は55〜70万円程度。"></textarea>
       </div>
       <div class="form-privacy">送信内容はMimosa Works（info@localnavi.net）に届きます。2営業日以内にご返信します。個人情報は第三者に提供しません。</div>
-      <button class="btn-submit">送信する</button>
+      <button class="btn-submit" id="btn-submit" onclick="submitListing()">送信する</button>
+      </div>
     </div>
   </div>
 
@@ -399,6 +408,49 @@ footer{background:#0f172a;color:rgba(255,255,255,0.3);padding:28px 48px;font-siz
 <script>
 function toggleFaq(btn) {
   btn.closest('.faq-item').classList.toggle('open');
+}
+
+async function submitListing() {
+  const company = document.getElementById('f-company').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  if (!company || !email) { alert('会社名・メールアドレスは必須です。'); return; }
+
+  const data = {
+    種別: '掲載申し込み（工務店）',
+    会社名: company,
+    担当者名: document.getElementById('f-name').value.trim(),
+    メールアドレス: email,
+    電話番号: document.getElementById('f-tel').value.trim(),
+    対応エリア: document.getElementById('f-area').value,
+    得意工事: document.getElementById('f-type').value,
+    相談内容: document.getElementById('f-purpose').value,
+    WebサイトURL: document.getElementById('f-url').value.trim(),
+    補足: document.getElementById('f-note').value.trim()
+  };
+
+  const btn = document.getElementById('btn-submit');
+  btn.textContent = '送信中...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/xaqzaqvk', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      document.getElementById('form-body').style.display = 'none';
+      document.getElementById('form-success').style.display = '';
+    } else {
+      alert('送信に失敗しました。時間をおいて再度お試しください。');
+      btn.textContent = '送信する';
+      btn.disabled = false;
+    }
+  } catch (e) {
+    alert('通信エラーが発生しました。インターネット接続をご確認ください。');
+    btn.textContent = '送信する';
+    btn.disabled = false;
+  }
 }
 </script>
 </body>
